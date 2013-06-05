@@ -21,7 +21,7 @@ public class testaUsuario {
     
     public static void main(String[] args) throws ConexaoException, BDException {
         
-        ControlaConexao controlaConexao = new ControlaConexao("C:/Users/oddy/Documents/NetBeansProjects/Dinamica1/config.txt");
+        ControlaConexao controlaConexao = new ControlaConexao("config.txt");
         
         Usuario user = new Usuario();
         
