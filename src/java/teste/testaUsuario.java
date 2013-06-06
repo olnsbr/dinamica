@@ -33,33 +33,36 @@ public class testaUsuario {
         Grupo g = new Grupo();
         
         g.setNome("Admins");
+        g.setCodigo(1L);
         
         user.setGrupo(g);
         
         UsuarioDAO uDAO = new UsuarioDAO(controlaConexao.getConexao());
         
-        List<Usuario> lista = new ArrayList<>();
-        
-        lista = uDAO.pesquisar(new Usuario(""));
-        
-        for (Usuario usuario : lista) {
-            
-            System.out.println(usuario.getCodigo());
-            System.out.println(usuario.getNome());
-            System.out.println(usuario.getEmail());
-            System.out.println(usuario.getTelefone());
-            System.out.println(usuario.getSenha());
-            
-        }
-        
-        user.setCodigo(2L);
-        Usuario uConsult = uDAO.consultar(user);
-        
-        System.out.println(uConsult.getCodigo());
-        System.out.println(uConsult.getNome());
-        System.out.println(uConsult.getEmail());
-        System.out.println(uConsult.getTelefone());
-        System.out.println(uConsult.getSenha());
+        uDAO.inserir(user);
+//        
+//        List<Usuario> lista = new ArrayList<>();
+//        
+//        lista = uDAO.pesquisar(new Usuario(""));
+//        
+//        for (Usuario usuario : lista) {
+//            
+//            System.out.println(usuario.getCodigo());
+//            System.out.println(usuario.getNome());
+//            System.out.println(usuario.getEmail());
+//            System.out.println(usuario.getTelefone());
+//            System.out.println(usuario.getSenha());
+//            
+//        }
+//        
+//        user.setCodigo(2L);
+//        Usuario uConsult = uDAO.consultar(user);
+//        
+//        System.out.println(uConsult.getCodigo());
+//        System.out.println(uConsult.getNome());
+//        System.out.println(uConsult.getEmail());
+//        System.out.println(uConsult.getTelefone());
+//        System.out.println(uConsult.getSenha());
         
 //        user.setCodigo(1L);
 //        uDAO.excluir(user);

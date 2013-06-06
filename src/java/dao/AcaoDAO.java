@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Acao;
+import modelo.Grupo;
+import modelo.Modulo;
 
 public class AcaoDAO {
 
@@ -58,13 +60,50 @@ public class AcaoDAO {
 
             instrucao.setString(1, acao.getDescricao());
             instrucao.setString(2, acao.getComponente());
-            instrucao.setLong(5, acao.getCodigo());
+            instrucao.setLong(3, acao.getCodigo());
 
             instrucao.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println("Erro" + e.getMessage());
         }
+
+    }
+
+    public void adicionarGrupo(Acao acao, Grupo grupo) throws BDException {
+
+        String sql = "UPDATE acao SET codgrupo=? WHERE codigo = ?";
+        try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
+
+            instrucao.setLong(1, grupo.getCodigo());
+            instrucao.setLong(2, acao.getCodigo());
+            instrucao.executeUpdate();
+
+
+
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+
+    }
+    
+    public void adicionarModulo(Acao acao, Modulo modulo) throws BDException {
+
+        String sql = "UPDATE acao SET codmodulo=? WHERE codigo = ?";
+        try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
+
+            //instrucao.setLong(1, modulo.getCodigo());
+            instrucao.setLong(2, acao.getCodigo());
+            instrucao.executeUpdate();
+
+
+
+        } catch (SQLException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+
+
     }
 
     public void excluir(Acao acao) throws BDException {
@@ -89,6 +128,7 @@ public class AcaoDAO {
             instrucao.setString(1, "%" + acao.getDescricao() + "%");
             ResultSet rs = instrucao.executeQuery();
             Acao newAcao = new Acao();
+
 
             while (rs.next()) {
                 newAcao.setCodigo(rs.getLong("acao.codigo"));
