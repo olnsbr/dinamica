@@ -98,21 +98,19 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
         }
-
-
     }
 
     public List<Usuario> pesquisar(Usuario usuario) throws BDException {
         List<Usuario> lista = new ArrayList<>();
 
         String sql = "SELECT * FROM usuario inner join grupo on usuario.codgupo = grupo.codigo WHERE usuario.nome like ?";
+        
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
             instrucao.setString(1, "%" + usuario.getNome() + "%");
             ResultSet rs = instrucao.executeQuery();
             Usuario newUsuario = new Usuario();
             Grupo newGrupo = new Grupo();
-            newUsuario.setGrupo(newGrupo);
-            
+            newUsuario.setGrupo(newGrupo);            
 
             while (rs.next()) {
                 newUsuario.setCodigo(rs.getLong("usuario.codigo"));

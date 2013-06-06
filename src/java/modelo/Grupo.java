@@ -65,6 +65,5 @@ public class Grupo {
         }
         final Grupo other = (Grupo) obj;
         return true;
-    }
-    
+    }    
 }

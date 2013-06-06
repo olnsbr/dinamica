@@ -1,5 +1,5 @@
 #config
 url=jdbc:mysql://localhost/dinamica
 user=root
-password=1234
+password=root
 driver=com.mysql.jdbc.Driver
