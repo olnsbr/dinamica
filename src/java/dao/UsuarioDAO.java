@@ -19,7 +19,7 @@ public class UsuarioDAO {
     }
 
     public void inserir(Usuario usuario) throws BDException {
-        String sql = "insert into usuario (nome,email,telefone,senha,grupo) values (?,?,?,?,?)";
+        String sql = "insert into usuario (nome,email,telefone,senha,codgupo) values (?,?,?,?,?)";
 
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
             instrucao.setString(1, usuario.getNome());
