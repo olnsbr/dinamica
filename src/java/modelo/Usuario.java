@@ -93,5 +93,6 @@ public class Usuario {
         }
         final Usuario other = (Usuario) obj;
         return true;
-    }    
+    }
+    
 }

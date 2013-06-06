@@ -8,7 +8,8 @@ package modelo;
  *
  * @author oddy
  */
-public class Acao {    
+public class Acao {
+    
     private long codigo;
     private String descricao;
     private String componente;
@@ -61,5 +62,8 @@ public class Acao {
         }
         final Acao other = (Acao) obj;
         return true;
-    }    
+    }
+    
+    
+    
 }
