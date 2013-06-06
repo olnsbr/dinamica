@@ -41,7 +41,6 @@ public class AcaoDAO {
                 acaoResult = new Acao();
                 acaoResult.setCodigo(result.getLong("acao.codigo"));
                 acaoResult.setDescricao(result.getString("acao.descricao"));
-
             }
 
             return acaoResult;
@@ -63,12 +62,9 @@ public class AcaoDAO {
 
             instrucao.executeUpdate();
 
-
-
         } catch (SQLException e) {
             System.out.println("Erro" + e.getMessage());
         }
-
     }
 
     public void excluir(Acao acao) throws BDException {
@@ -76,26 +72,23 @@ public class AcaoDAO {
         String sql = "DELETE FROM acao WHERE codigo = ?";
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
 
-
             instrucao.setLong(1, acao.getCodigo());
 
             instrucao.execute();
         } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
         }
-
-
     }
 
     public List<Acao> pesquisar(Acao acao) throws BDException {
         List<Acao> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM acao WERE descricao like ?";
+        String sql = "SELECT * FROM acao WHERE descricao like ?";
+        
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
-            instrucao.setString(1, "%" + acao.getDescricao()+ "%");
+            instrucao.setString(1, "%" + acao.getDescricao() + "%");
             ResultSet rs = instrucao.executeQuery();
             Acao newAcao = new Acao();
-            
 
             while (rs.next()) {
                 newAcao.setCodigo(rs.getLong("acao.codigo"));
