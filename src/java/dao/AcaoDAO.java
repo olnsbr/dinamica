@@ -93,7 +93,7 @@ public class AcaoDAO {
         String sql = "UPDATE acao SET codmodulo=? WHERE codigo = ?";
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
 
-            //instrucao.setLong(1, modulo.getCodigo());
+            instrucao.setLong(1, modulo.getCodigo());
             instrucao.setLong(2, acao.getCodigo());
             instrucao.executeUpdate();
 
