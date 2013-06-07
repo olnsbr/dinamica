@@ -11,10 +11,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../css/estilo.css">        
-        <title>Cadastro de Usuario</title>
+        <title>Cadastrar Usuario</title>
     </head>
     <body>
-        <h1>Cadastro de Usuario</h1>
+        <h1>Cadastrar Usuario</h1>
 
         <jsp:useBean id = "controleUsuario" class="controle.UsuarioControle"/>
         <jsp:useBean id = "user" class="modelo.Usuario"/>
@@ -53,12 +53,12 @@
             <input type='submit' name='salvar' value='Salvar'>
 
             <SCRIPT LANGUAGE="JavaScript">
-                function cancelarCadastro() {
+                function cancelar() {
                     window.location = "pesquisarUsuario.jsp";
                 }
             </script>
 
-            <input id="botaoCancelar" type="button" value="Cancelar" onClick="cancelarCadastro()">
+            <input id="botaoCancelar" type="button" value="Cancelar" onClick="cancelar()">
         </form>
 
         <c:if test="${not empty param.salvar}">

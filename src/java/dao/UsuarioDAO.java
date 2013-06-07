@@ -42,7 +42,6 @@ public class UsuarioDAO {
             ResultSet result = instrucao.executeQuery();
 
             while (result.next()) {
-
                 usuarioResult = new Usuario();
                 grupoResult = new Grupo();
                 usuarioResult.setGrupo(grupoResult);
@@ -80,7 +79,6 @@ public class UsuarioDAO {
         } catch (SQLException e) {
             System.out.println("Erro" + e.getMessage());
         }
-
     }
 
     public void excluir(Usuario usuario) throws BDException {
