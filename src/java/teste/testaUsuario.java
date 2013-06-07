@@ -9,6 +9,7 @@ import excecao.BDException;
 import excecao.ConexaoException;
 import java.util.ArrayList;
 import java.util.List;
+import modelo.Grupo;
 import modelo.Usuario;
 import util.ControlaConexao;
 
@@ -44,17 +45,17 @@ public class testaUsuario {
         
         lista = uDAO.pesquisar(new Usuario(""));
         
-        for (Usuario usuario : lista) {
-            
-            System.out.println(usuario.getCodigo());
-            System.out.println(usuario.getNome());
-            System.out.println(usuario.getEmail());
-            System.out.println(usuario.getTelefone());
-            System.out.println(usuario.getSenha());
-            
-        }
+//        for (Usuario usuario : lista) {
+//            
+//            System.out.println(usuario.getCodigo());
+//            System.out.println(usuario.getNome());
+//            System.out.println(usuario.getEmail());
+//            System.out.println(usuario.getTelefone());
+//            System.out.println(usuario.getSenha());
+//            
+//        }
 //        
-//        user.setCodigo(2L);
+//        user.setCodigo(6L);
 //        Usuario uConsult = uDAO.consultar(user);
 //        
 //        System.out.println(uConsult.getCodigo());
@@ -63,8 +64,15 @@ public class testaUsuario {
 //        System.out.println(uConsult.getTelefone());
 //        System.out.println(uConsult.getSenha());
         
-//        user.setCodigo(1L);
-//        uDAO.excluir(user);        
+        user.setCodigo(12L);
+        user.setNome("nome");
+        Grupo g = new Grupo();
+        
+        g.setNome("Analista");
+        g.setCodigo(3L);
+        
+        user.setGrupo(g);
+        uDAO.alterar(user);      
     }
     
 }

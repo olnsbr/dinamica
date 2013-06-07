@@ -16,7 +16,7 @@ import util.ControlaConexao;
  *
  * @author Fran
  */
-public class GrupoControle {
+public final class GrupoControle {
     private Grupo grupo = new Grupo("");
     
     private  List<Grupo> grupos = new ArrayList<>();

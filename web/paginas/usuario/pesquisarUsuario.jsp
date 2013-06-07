@@ -12,12 +12,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="../css/estilo.css">
-        <title>Pesquisa de Usuario</title>
+        <title>Pesquisar Usuario</title>
     </head>
 
     <body>
         <div id="topo">
-            <h1>Pesquisa de Usuario</h1>
+            <h1>Pesquisar Usuario</h1>
         </div>
 
         <jsp:useBean id = "controle" class="controle.UsuarioControle"/>
