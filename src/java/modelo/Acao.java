@@ -16,6 +16,10 @@ public class Acao {
     public Acao() {
     }
 
+    public Acao(long codigo) {
+        this.codigo = codigo;
+    }
+
     public long getCodigo() {
         return codigo;
     }

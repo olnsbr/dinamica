@@ -43,6 +43,7 @@ public class AcaoDAO {
                 acaoResult = new Acao();
                 acaoResult.setCodigo(result.getLong("acao.codigo"));
                 acaoResult.setDescricao(result.getString("acao.descricao"));
+                acaoResult.setComponente(result.getString("acao.componente"));
             }
 
             return acaoResult;
@@ -123,9 +124,10 @@ public class AcaoDAO {
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
             instrucao.setString(1, "%" + acao.getDescricao() + "%");
             ResultSet rs = instrucao.executeQuery();
-            Acao newAcao = new Acao();
+            
 
             while (rs.next()) {
+                Acao newAcao = new Acao();
                 newAcao.setCodigo(rs.getLong("acao.codigo"));
                 newAcao.setDescricao(rs.getString("acao.descricao"));
                 newAcao.setComponente(rs.getString("acao.componente"));

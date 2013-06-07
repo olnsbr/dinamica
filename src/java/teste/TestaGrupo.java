@@ -24,14 +24,17 @@ public class TestaGrupo {
         
         GrupoDAO grupoDAO = new GrupoDAO(controlaConexao.getConexao());
         
-        List<Grupo> lista = new ArrayList<>();
-        
-        lista = grupoDAO.pesquisar(new Grupo(""));
-        
-        for (Grupo grup : lista) {
-            
-            System.out.println(grup.getCodigo());           
-            System.out.println(grup.getNome());           
-        }
+//        List<Grupo> lista = new ArrayList<>();
+//        
+//        lista = grupoDAO.pesquisar(new Grupo(""));
+//        
+//        for (Grupo grup : lista) {
+//            
+//            System.out.println(grup.getCodigo());           
+//            System.out.println(grup.getNome());           
+//        }
+        grupo.setCodigo(2L);
+        grupo.setNome("Suportes");
+        grupoDAO.alterar(grupo);
     }
 }

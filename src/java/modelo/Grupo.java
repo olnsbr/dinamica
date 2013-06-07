@@ -23,8 +23,11 @@ public class Grupo {
     public Grupo(String nome) {
         this.nome = nome;
     }
-    
 
+    public Grupo(long codigo) {
+        this.codigo = codigo;
+    }
+    
     public long getCodigo() {
         return codigo;
     }

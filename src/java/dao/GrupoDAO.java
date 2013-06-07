@@ -87,7 +87,7 @@ public class GrupoDAO {
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
 
             instrucao.setString(1, grupo.getNome());
-            instrucao.setLong(6, grupo.getCodigo());
+            instrucao.setLong(2, grupo.getCodigo());
 
             instrucao.executeUpdate();
 

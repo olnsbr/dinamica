@@ -7,6 +7,8 @@ package teste;
 import dao.AcaoDAO;
 import excecao.BDException;
 import excecao.ConexaoException;
+import java.util.ArrayList;
+import java.util.List;
 import modelo.Acao;
 import modelo.Grupo;
 import modelo.Modulo;
@@ -26,14 +28,20 @@ public class testaAcao {
         AcaoDAO aDAO = new AcaoDAO(controla.getConexao());
         
         acao.setCodigo(1L);
+        acao.setDescricao("Sell Produto");
+        aDAO.alterar(acao);
         
-        Grupo grupo = new Grupo();
+        acao.setDescricao("");
         
-        Modulo mod = new Modulo();
+        List<Acao> acoes = new ArrayList<>();
         
-        grupo.setCodigo(1L);
+        acoes = aDAO.pesquisar(acao);
         
-        aDAO.adicionarGrupo(acao, grupo);        
+        for (Acao acao1 : acoes) {
+            
+            System.out.println(acao1.getDescricao());
+            
+        }
         
       
         
