@@ -65,6 +65,7 @@ public class PesquisarAcaoServlet extends HttpServlet {
             out.println("<html>");
             out.println("<head>");
             out.println("<title>Servlet PesquisarAcaoServlet</title>");            
+            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/estilo.css\">");            
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Pesquisar Acao</h1>");

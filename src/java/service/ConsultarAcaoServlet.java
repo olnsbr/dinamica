@@ -60,7 +60,8 @@ public class ConsultarAcaoServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConsultarAcaoServlet</title>");            
+            out.println("<title>Servlet ConsultarAcaoServlet</title>");
+            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/estilo.css\">");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Consultar Acao</h1>");

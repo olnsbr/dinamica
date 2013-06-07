@@ -10,6 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="../css/estilo.css">
         <title>Consultar Usuario</title>
     </head>
     <body>
@@ -46,7 +47,7 @@
                 window.location = "pesquisarUsuario.jsp";
             }
             function alterar(cod) {
-                window.location = "alterarUsuario.jsp"+cod;
+                window.location = "alterarUsuario.jsp?codigo="+cod;
             }
             function alterarSenha() {
                 window.location = "alterarSenhaUsuario.jsp?codigo=${usuario.codigo}";
@@ -55,11 +56,12 @@
                 window.location = "pesquisarUsuario.jsp";
             }
         </script>
-
-        <input type='button' name='alterar' value='Alterar' onclick="alterar()">
-        <input type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha()">
-        <input type='submit' name='excluir' value='Excluir'>
-        <input id="botaoCancelar" type="button" value="Cancelar" onClick="cancelar()">
+        
+        
+        <input type='button' name='alterar' value='Alterar' onclick="alterar()"/>
+        <input type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha()"/>
+        <input type='submit' name='excluir' value='Excluir'/>
+        <input id="botaoCancelar" type="button" value="Cancelar" onclick="cancelar()"/>
         
     </body>
 </body>

@@ -14,6 +14,7 @@
 <html>
     <head>
         <title>Servlet AlterarGrupoServlet</title>
+        <link rel="stylesheet" type="text/css" href="../css/estilo.css">
     </head>
     <body>
         <h1>Alterar Grupo</h1>

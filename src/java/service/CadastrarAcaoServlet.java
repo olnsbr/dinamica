@@ -32,6 +32,7 @@ public class CadastrarAcaoServlet extends HttpServlet {
             saida.println("<html>");
             saida.println("<head>");
             saida.println("<meta http-equiv='Content-Type' content='text/html; charset=ISO-8859-1'>");
+            saida.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/estilo.css\">");
             saida.println("<title>Titulo da Página</title>");
             saida.println("</head>");
             saida.println("<body>");
