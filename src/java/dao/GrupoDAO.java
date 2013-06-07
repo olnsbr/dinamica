@@ -124,10 +124,11 @@ public class GrupoDAO {
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
             instrucao.setString(1, "%" + grupo.getNome() + "%");
             ResultSet rs = instrucao.executeQuery();
-            Grupo newGrupo = new Grupo();
+           
             
 
             while (rs.next()) {
+                Grupo newGrupo = new Grupo();
                 newGrupo.setCodigo(rs.getLong("grupo.codigo"));
                 newGrupo.setNome(rs.getString("grupo.nome"));
                 lista.add(newGrupo);

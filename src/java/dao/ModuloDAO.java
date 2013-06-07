@@ -95,11 +95,11 @@ public class ModuloDAO {
         
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
             instrucao.setString(1, "%" + modulo.getDescricao() + "%");
-            ResultSet rs = instrucao.executeQuery();
-            
+            ResultSet rs = instrucao.executeQuery();            
 
             while (rs.next()) {
                 Modulo newModulo = new Modulo();
+                
                 newModulo.setCodigo(rs.getLong("modulo.codigo"));
                 newModulo.setDescricao(rs.getString("modulo.descricao"));
                 lista.add(newModulo);

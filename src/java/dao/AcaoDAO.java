@@ -97,13 +97,9 @@ public class AcaoDAO {
             instrucao.setLong(2, acao.getCodigo());
             instrucao.executeUpdate();
 
-
-
         } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
         }
-
-
     }
 
     public void excluir(Acao acao) throws BDException {
@@ -128,7 +124,6 @@ public class AcaoDAO {
             instrucao.setString(1, "%" + acao.getDescricao() + "%");
             ResultSet rs = instrucao.executeQuery();
             Acao newAcao = new Acao();
-
 
             while (rs.next()) {
                 newAcao.setCodigo(rs.getLong("acao.codigo"));

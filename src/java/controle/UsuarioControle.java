@@ -12,12 +12,11 @@ import java.util.List;
 import modelo.Usuario;
 import util.ControlaConexao;
 
-
 /**
  *
  * @author Fran
  */
-public class UsuarioControle {
+public final class UsuarioControle {
 
     private Usuario usuario = new Usuario("");
     private List<Usuario> usuarios = new ArrayList<>();
@@ -40,12 +39,20 @@ public class UsuarioControle {
 
     public void pesquisar() throws ConexaoException, BDException {
         
-        ControlaConexao controlaConexao;
-        controlaConexao = new ControlaConexao("config.txt");       
-
+        ControlaConexao controlaConexao = new ControlaConexao("config.txt");       
 
         UsuarioDAO usuarioDAO = new UsuarioDAO(controlaConexao.getConexao());
 
         this.usuarios = usuarioDAO.pesquisar(usuario);
+    }
+    
+    public void cadastrar() throws ConexaoException, BDException {
+        
+        ControlaConexao controlaConexao = new ControlaConexao("config.txt");       
+
+        UsuarioDAO usuarioDAO = new UsuarioDAO(controlaConexao.getConexao());
+        
+        
+        usuarioDAO.inserir(usuario);
     }
 }

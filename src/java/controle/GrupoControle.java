@@ -17,7 +17,7 @@ import util.ControlaConexao;
  * @author Fran
  */
 public class GrupoControle {
-    private Grupo grupo = new Grupo();
+    private Grupo grupo = new Grupo("");
     
     private  List<Grupo> grupos = new ArrayList<>();
 
@@ -38,8 +38,10 @@ public class GrupoControle {
     }
     
     public void listar() throws ConexaoException, BDException{        
-        ControlaConexao controlaConexao = new ControlaConexao("C:/Users/Fran/Documents/NetBeansProjects/Dinamica1/config.txt");
-    
-               
+        ControlaConexao controlaConexao = new ControlaConexao("config.txt");
+        
+        GrupoDAO grupoDAO = new GrupoDAO(controlaConexao.getConexao());
+        
+        this.grupos = grupoDAO.pesquisar(this.grupo);
     }
 }

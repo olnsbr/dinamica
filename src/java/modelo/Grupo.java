@@ -20,6 +20,11 @@ public class Grupo {
     public Grupo() {
     }
 
+    public Grupo(String nome) {
+        this.nome = nome;
+    }
+    
+
     public long getCodigo() {
         return codigo;
     }
