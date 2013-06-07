@@ -84,6 +84,7 @@ public class PesquisarAcaoServlet extends HttpServlet {
             out.println("</table><br/>");
             out.println("<form name='cadastros'>");
             out.println("<a href='cadastrarAcao'><input type='button' name='cadastrarAcao' value='Cadastrar Acao'></a>");
+            out.println("<a href='./paginas/index.jsp'><input type='button' name='index' value='Cancelar'></a>");
             out.println("</form>");            
             out.println("</body>");
             out.println("</html>");

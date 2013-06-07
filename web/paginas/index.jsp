@@ -9,9 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Sistema de CRUD's</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Selecione o CRUD</h1>
+        
+        <a href="usuario/pesquisarUsuario.jsp">Usuario</a><br/> 
+        <a href="grupo/pesquisarGrupo.jsp">Grupo</a><br/> 
+        <a href="../pesquisarAcao">Ação</a><br/> 
+        
     </body>
 </html>

@@ -16,6 +16,10 @@ public class Acao {
     public Acao() {
     }
 
+    public Acao(String descricao) {
+        this.descricao = descricao;
+    }
+
     public Acao(long codigo) {
         this.codigo = codigo;
     }
@@ -51,7 +55,7 @@ public class Acao {
 
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 5;
         return hash;
     }
 
@@ -64,6 +68,13 @@ public class Acao {
             return false;
         }
         final Acao other = (Acao) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
         return true;
-    }    
+    }
+    
+    
+
+    
 }

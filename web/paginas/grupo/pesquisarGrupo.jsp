@@ -45,6 +45,7 @@
     </table><br/>
     <form name='cadastros'>
         <a href='cadastrarGrupo.jsp'><input type='button' name='cadastrarGrupo' value='Cadastrar Grupo'></a>
+        <a href='../index.jsp'><input type='button' name='index' value='Cancelar'></a>
     </form>
 </body>
 

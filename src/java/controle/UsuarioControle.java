@@ -56,13 +56,14 @@ public final class UsuarioControle {
         usuarioDAO.inserir(usuario);
     }
     
-    public Usuario consultar(Usuario usuario) throws ConexaoException, BDException{
+    public Usuario consultar(Usuario user) throws ConexaoException, BDException{
+        
         ControlaConexao controlaConexao = new ControlaConexao("config.txt");       
 
         UsuarioDAO usuarioDAO = new UsuarioDAO(controlaConexao.getConexao());
         
-        usuarioDAO.consultar(usuario);
+        this.usuario = usuarioDAO.consultar(user);
         
-        return usuario;
+        return this.usuario;
     }
 }

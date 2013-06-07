@@ -58,7 +58,7 @@
 
                     <tr>
                         <td>${usuario.codigo}</td>                     
-                        <td><a href="consultarUsuario.jsp"</a>${usuario.nome}</td>                     
+                        <td><a href="consultarUsuario.jsp?codigo=${usuario.codigo}"</a>${usuario.nome}</td>                     
                         <td>${usuario.email}</td>
                         <td>${usuario.grupo.nome}</td>
                     </tr>
@@ -73,6 +73,7 @@
             </script>
 
             <input id="inputBotao" type="button" value="Cadastrar" onClick="cadastrarUsuario()">
+            <a href='../index.jsp'><input type='button' name='index' value='Cancelar'></a>
 
         </div>
 
