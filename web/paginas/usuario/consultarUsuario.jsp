@@ -41,8 +41,8 @@
     </fieldset>    
 
     <form name='consultarCidade' action='consultarCidade.jsp'>
-        <input type='submit' name='excluir' value='Excluir'>
-        <a href='pesquisarCidade.jsp'><input type='button' name='cancelar' value='Cancelar'</a>
+        <input type='submit' name='excluir' value='Excluir'/>
+        <a href='pesquisarUsuario.jsp'><input type='button' name='cancelar' value='Cancelar'/></a>
     </form>
 </body>
 </body>
