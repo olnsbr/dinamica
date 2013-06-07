@@ -47,7 +47,7 @@
                 <jsp:setProperty name="user" property="nome" value="${param.nome}"/>
                 <jsp:setProperty name="user" property="email" value="${param.email}"/>
                 <jsp:setProperty name="controle" property="usuario" value="${user}"/>
-                <%controle.pesquisar();%>
+                ${controle.pesquisar()}
 
             </c:if>            
 
@@ -58,7 +58,7 @@
 
                     <tr>
                         <td>${usuario.codigo}</td>                     
-                        <td><a href="cadastrarUsuario.jsp"</a>${usuario.nome}</td>                     
+                        <td><a href="consultarUsuario.jsp"</a>${usuario.nome}</td>                     
                         <td>${usuario.email}</td>
                         <td>${usuario.grupo.nome}</td>
                     </tr>
@@ -67,7 +67,6 @@
             </table>
 
             <SCRIPT LANGUAGE="JavaScript">
-
                 function cadastrarUsuario() {
                     window.location = "cadastrarUsuario.jsp";
                 }

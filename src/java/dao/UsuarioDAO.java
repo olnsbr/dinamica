@@ -52,6 +52,7 @@ public class UsuarioDAO {
                 usuarioResult.setEmail(result.getString("usuario.email"));
                 usuarioResult.setSenha(result.getString("usuario.senha"));
                 usuarioResult.getGrupo().setCodigo(result.getLong("grupo.codigo"));
+                usuarioResult.getGrupo().setNome(result.getString("grupo.nome"));
             }
 
             return usuarioResult;

@@ -10,7 +10,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Cadastrar Usuario</title>
+        <link rel="stylesheet" type="text/css" href="../css/estilo.css">        
+        <title>Cadastro de Usuario</title>
     </head>
     <body>
         <h1>Cadastro de Usuario</h1>
@@ -19,7 +20,6 @@
         <jsp:useBean id = "user" class="modelo.Usuario"/>
         <jsp:useBean id = "controleGrupo" class="controle.GrupoControle"/>
         <jsp:useBean id = "grup" class="modelo.Grupo"/>
-
 
         <form action='cadastrarUsuario.jsp'>
             <fieldset>                
@@ -40,6 +40,7 @@
                     </c:forEach>
 
                 </select>
+                <br/>
 
                 <label for="senha">Senha:</label><br/>
                 <input type="password" name="senha" value="${user.senha}" maxlength="30" size="90"/><br/>
@@ -47,25 +48,29 @@
                 <label for="confirma">Confirmar Senha:</label><br/>
                 <input type="password" name="telefone" maxlength="30" size="90"/><br/><%--ver esse negocio aqui depois--%>
 
-            </fieldset>                   
-
-            <!--fazer o cadastro-->
+            </fieldset>  
 
             <input type='submit' name='salvar' value='Salvar'>
 
-            <a href='pesquisarCidade.jsp'><input type='button' name='cancelar' value='Cancelar'></a>
-    </form>
+            <SCRIPT LANGUAGE="JavaScript">
+                function cancelarCadastro() {
+                    window.location = "pesquisarUsuario.jsp";
+                }
+            </script>
 
-    <c:if test="${not empty param.salvar}">
-        <jsp:setProperty name="controleUsuario" property="usuario.nome" value="${param.nome}"/>
-        <jsp:setProperty name="controleUsuario" property="usuario.email" value="${param.email}"/>
-        <jsp:setProperty name="controleUsuario" property="usuario.telefone" value="${param.telefone}"/>
-        <jsp:setProperty name="controleUsuario" property="usuario.grupo.codigo" value="${param.grupo}"/>
-        <jsp:setProperty name="controleUsuario" property="usuario.senha" value="${param.senha}"/>
+            <input id="botaoCancelar" type="button" value="Cancelar" onClick="cancelarCadastro()">
+        </form>
 
-        <%controleUsuario.cadastrar();%>
+        <c:if test="${not empty param.salvar}">
+            <jsp:setProperty name="user" property="nome" value="${param.nome}"/>
+            <jsp:setProperty name="user" property="email" value="${param.email}"/>
+            <jsp:setProperty name="user" property="telefone" value="${param.telefone}"/>
+            <jsp:setProperty name="grup" property="codigo" value="${param.grupo}"/>
+            <jsp:setProperty name="user" property="grupo" value="${grup}"/>
+            <jsp:setProperty name="user" property="senha" value="${param.senha}"/>
+            <jsp:setProperty name="controleUsuario" property="usuario" value="${user}"/>
 
-    </c:if>
-
-</body>
+            <%controleUsuario.cadastrar();%>
+        </c:if>        
+    </body>
 </html>
