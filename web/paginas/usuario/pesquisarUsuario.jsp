@@ -18,7 +18,7 @@
     <body>
         <div id="topo">
             <h1>Pesquisar Usuario</h1>
-        </div>
+        </div>        
 
         <jsp:useBean id = "controle" class="controle.UsuarioControle"/>
         <jsp:useBean id = "user" class="modelo.Usuario"/>
