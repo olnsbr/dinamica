@@ -31,6 +31,9 @@
             String p = request.getParameter("codigo");
             GrupoDAO cDAO = new GrupoDAO(controlaConexao.getConexao());
             Grupo grup = cDAO.consultarPorCodigo(new Grupo(Long.parseLong(p)));
+            String s = request.getParameter("adicionar");
+            String e = request.getParameter("codacao");
+
 
         %>
 
@@ -38,22 +41,12 @@
 
             <p>Código: <%=grup.getCodigo()%></p>
             <p>Nome: <%=grup.getNome()%> </p>
-            
-            <input type="hidden" name="codigo" value="<%=grup.getCodigo() %>"
-                   
-            <p>Ação:
+
+            <input type="hidden" name="codigo" value="<%=grup.getCodigo()%>"
+
+                   <p>Ação:
                 <select name='acao'>
                     <%
-                        String s = request.getParameter("adicionar");
-                        String e = request.getParameter("exclur");
-                        
-                        if  (e != null){
-                            
-                                                        
-                            
-                        }
-                        
-                        
                         if (s != null) {
 
                             String aS = request.getParameter("acao");
@@ -63,12 +56,29 @@
                             aDAO.adicionarGrupo(acao, grup);
 
                         }
+                        
+                        if (e != null) {
+
+                            Acao ac = new Acao(Long.parseLong(e));
+
+                            aDAO.removerGrupo(ac, grup);
+
+                        }
 
 
 
                         List<Acao> todasAcoes = new ArrayList(aDAO.pesquisar(acao));
                         List<Acao> grupoAcoes = new ArrayList(aDAO.pesquisarAcaoGrupo(grup));
                         todasAcoes.removeAll(grupoAcoes);
+
+                        if (todasAcoes.size() == 0) {
+
+                    %>
+
+                    <option value="0" disabled="true">Nenhuma Disponível</option>
+
+
+                    <%                        }
                         for (Acao a : todasAcoes) {
 
                     %>
@@ -77,41 +87,33 @@
 
 
                     <%}%>
-                </select><br/></p>
-
-
+                </select></p><br/>
             <input type="submit" name="adicionar" value="Adicionar"/></form>
-                
-        <table border=1>
-            <tr><th>Codigo</th><th>Nome</th>
+        <form name="excluir">
+            <select name="codacao" size="5">
 
                 <%
-                    List<Acao> lista = aDAO.pesquisarAcaoGrupo(grup);
-                    for (Acao a : lista) {%>
 
-            <tr>
-                <td><%=a.getCodigo()%></td>
-                <td><%=a.getDescricao()%></td>
-            </tr>
+                    if (grupoAcoes.size() == 0) {
 
-            <%}%>            
+                %>
 
-        </table><br/>
-        <form name="excluir">
-        <select name="GrupoAcoes" multiple="multiple">
-            
-            <% 
-                    
-                    for (Acao a : grupoAcoes){%>
-                        
-                        <option value='<%=a.getCodigo()%>'><%=a.getDescricao()%></option>
+                <option value="0" disabled="true">Nenhuma Ação</option>
 
 
-                    <%}%>
-                </select>
-        
-                <input type="submit" name="excluir" value="Excluir"/>
+                <%                    }
+
+                    for (Acao a : grupoAcoes) {%>
+
+                <option value='<%=a.getCodigo()%>'><%=a.getDescricao()%></option>
+
+
+                <%}%>
+            </select>
+
+            <input type="submit" name="excluir" value="Excluir"/>
+            <input type="hidden" name="codigo" value="<%=grup.getCodigo()%>"/>
         </form>
-
+        <a href='consultarGrupo.jsp?codigo=<%=grup.getCodigo()%> '> <input type='button' name='cancelar' value='Cancelar'</a>
     </body>
 </html>

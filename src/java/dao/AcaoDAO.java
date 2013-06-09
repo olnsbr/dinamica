@@ -73,7 +73,7 @@ public class AcaoDAO {
 
     public void adicionarGrupo(Acao acao, Grupo grupo) throws BDException {
 
-        String sql = "UPDATE acao SET codgrupo=? WHERE codigo = ?";
+        String sql = "INSERT into acoesgrupo (codgrupo, codacao) values (?,?)";
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
 
             instrucao.setLong(1, grupo.getCodigo());
@@ -89,15 +89,15 @@ public class AcaoDAO {
 
     }
     
-    public void adicionarModulo(Acao acao, Modulo modulo) throws BDException {
+    public void removerGrupo(Acao acao, Grupo grupo) throws BDException {
 
-        String sql = "UPDATE acao SET codmodulo=? WHERE codigo = ?";
+        String sql = "DELETE FROM acoesgrupo WHERE codgrupo=? AND codacao=? ";
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
 
-            instrucao.setLong(1, modulo.getCodigo());
+            instrucao.setLong(1, grupo.getCodigo());
             instrucao.setLong(2, acao.getCodigo());
-            instrucao.executeUpdate();
 
+            instrucao.execute();
         } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
         }
@@ -143,7 +143,7 @@ public class AcaoDAO {
     public List<Acao> pesquisarAcaoGrupo(Grupo grupo) throws BDException {
         List<Acao> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM acao inner join grupo on acao.codgrupo = grupo.codigo WHERE codgrupo = ?";
+        String sql = "SELECT * FROM acoesgrupo inner join acao on codacao = acao.codigo WHERE codgrupo = ?";
         
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
             instrucao.setLong(1, grupo.getCodigo());
