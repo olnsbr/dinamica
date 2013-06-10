@@ -52,7 +52,6 @@ public final class UsuarioControle {
 
         UsuarioDAO usuarioDAO = new UsuarioDAO(controlaConexao.getConexao());
         
-        
         usuarioDAO.inserir(usuario);
     }
     
@@ -68,6 +67,7 @@ public final class UsuarioControle {
     }
     
     public void alterar(Usuario usuario) throws ConexaoException, BDException{
+        
         ControlaConexao controlaConexao = new ControlaConexao("config.txt");       
 
         UsuarioDAO usuarioDAO = new UsuarioDAO(controlaConexao.getConexao());

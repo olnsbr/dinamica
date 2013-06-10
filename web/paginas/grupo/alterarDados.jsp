@@ -44,26 +44,32 @@
 
             <input type="hidden" name="codigo" value="<%=grup.getCodigo()%>"
 
+                   <%
+                       if (e != null) {
+
+                           acao.setCodigo(Long.parseLong(e));
+
+                           aDAO.removerGrupo(acao, grup);
+
+                       }
+
+                       if (s != null) {
+
+                           String aS = request.getParameter("acao");
+
+                           acao.setCodigo(Long.parseLong(aS));
+
+                           aDAO.adicionarGrupo(acao, grup);
+
+                       }
+
+                   %>
+
                    <p>Ação:
                 <select name='acao'>
+
+
                     <%
-                        if (s != null) {
-
-                            String aS = request.getParameter("acao");
-
-                            acao.setCodigo(Long.parseLong(aS));
-
-                            aDAO.adicionarGrupo(acao, grup);
-
-                        }
-                        
-                        if (e != null) {
-
-                            Acao ac = new Acao(Long.parseLong(e));
-
-                            aDAO.removerGrupo(ac, grup);
-
-                        }
 
 
 
@@ -71,14 +77,6 @@
                         List<Acao> grupoAcoes = new ArrayList(aDAO.pesquisarAcaoGrupo(grup));
                         todasAcoes.removeAll(grupoAcoes);
 
-                        if (todasAcoes.size() == 0) {
-
-                    %>
-
-                    <option value="0" disabled="true">Nenhuma Disponível</option>
-
-
-                    <%                        }
                         for (Acao a : todasAcoes) {
 
                     %>
@@ -89,19 +87,10 @@
                     <%}%>
                 </select></p><br/>
             <input type="submit" name="adicionar" value="Adicionar"/></form>
-        <form name="excluir">
+        <form name="excluir" action="alterarDados.jsp">
             <select name="codacao" size="5">
 
                 <%
-
-                    if (grupoAcoes.size() == 0) {
-
-                %>
-
-                <option value="0" disabled="true">Nenhuma Ação</option>
-
-
-                <%                    }
 
                     for (Acao a : grupoAcoes) {%>
 
