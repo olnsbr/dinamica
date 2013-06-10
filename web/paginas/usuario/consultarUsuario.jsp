@@ -58,7 +58,7 @@
         </script>
         
         
-        <input type='button' name='alterar' value='Alterar' onclick="alterar()"/>
+        <input type='button' name='alterar' value='Alterar' onclick="alterar(${user.codigo})"/>
         <input type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha()"/>
         <input type='submit' name='excluir' value='Excluir'/>
         <input id="botaoCancelar" type="button" value="Cancelar" onclick="cancelar()"/>

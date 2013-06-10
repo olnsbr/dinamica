@@ -25,10 +25,12 @@
 
         <jsp:setProperty name="controleUsuario" property="usuario" value="${controleUsuario.consultar(user)}"/> 
 
-        <form action='consultarUsuario.jsp?codigo=${usuario.codigo}'>
-            <fieldset>  
+        <form action='JavaScript:alterar()'>
+            <fieldset>
+                
                 <label for="codigo"><b>Codigo:</b></label><br/>
                 ${controleUsuario.usuario.codigo}<br/>
+                <input type="hidden" name="codigo" value="${controleUsuario.usuario.codigo}"/>
 
                 <label for="nome">Nome:</label><br/>
                 <input type="text" name="nome" value="${controleUsuario.usuario.nome}" maxlength="30" size="90"/><br/>
@@ -51,7 +53,13 @@
 
             <SCRIPT LANGUAGE="JavaScript">
                 function cancelar() {
-                    window.location = "consultarUsuario.jsp?codigo=${usuario.codigo}";
+                    window.location = "consultarUsuario.jsp?codigo=${controleUsuario.usuario.codigo}";
+                }
+                function alterar(){
+                    
+                    <% controleUsuario.alterar(controleUsuario.getUsuario());%>
+                    
+                    window.location = "consultarUsuario.jsp?codigo=${controleUsuario.usuario.codigo}";
                 }
             </script>
 
@@ -62,7 +70,7 @@
         
             <jsp:setProperty name="controleUsuario" property="usuario" value="${user}"/>
 
-            <%controleUsuario.alterar(user);%>
+            
        
     </body>
 </html>

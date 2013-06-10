@@ -91,7 +91,7 @@ public class AcaoDAO {
     
     public void removerGrupo(Acao acao, Grupo grupo) throws BDException {
 
-        String sql = "DELETE FROM acoesgrupo WHERE codgrupo=? AND codacao=? ";
+        String sql = "DELETE FROM acoesgrupo WHERE codgrupo=? AND codacao=? cascade constraints";
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
 
             instrucao.setLong(1, grupo.getCodigo());
