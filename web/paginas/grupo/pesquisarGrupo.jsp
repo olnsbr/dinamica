@@ -8,6 +8,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html>
     <title>Servlet PesquisarGrupoServlet</title>
+    <link rel="stylesheet" type="text/css" href="../css/estilo.css">
 </head>
 <body>
     <h1>Pesquisar Grupo</h1>
@@ -45,6 +46,7 @@
     </table><br/>
     <form name='cadastros'>
         <a href='cadastrarGrupo.jsp'><input type='button' name='cadastrarGrupo' value='Cadastrar Grupo'></a>
+        <a href='../index.jsp'><input type='button' name='index' value='Cancelar'></a>
     </form>
 </body>
 

@@ -115,6 +115,7 @@ public class AcaoDAO {
             System.out.println("Erro: " + e.getMessage());
         }
     }
+    
 
     public List<Acao> pesquisar(Acao acao) throws BDException {
         List<Acao> lista = new ArrayList<>();
@@ -123,6 +124,29 @@ public class AcaoDAO {
         
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
             instrucao.setString(1, "%" + acao.getDescricao() + "%");
+            ResultSet rs = instrucao.executeQuery();
+            
+
+            while (rs.next()) {
+                Acao newAcao = new Acao();
+                newAcao.setCodigo(rs.getLong("acao.codigo"));
+                newAcao.setDescricao(rs.getString("acao.descricao"));
+                newAcao.setComponente(rs.getString("acao.componente"));
+                lista.add(newAcao);
+            }
+        } catch (SQLException e) {
+            throw new BDException(e);
+        }
+        return lista;
+    }
+    
+    public List<Acao> pesquisarAcaoGrupo(Grupo grupo) throws BDException {
+        List<Acao> lista = new ArrayList<>();
+
+        String sql = "SELECT * FROM acao inner join grupo on acao.codgrupo = grupo.codigo WHERE codgrupo = ?";
+        
+        try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
+            instrucao.setLong(1, grupo.getCodigo());
             ResultSet rs = instrucao.executeQuery();
             
 

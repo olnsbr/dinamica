@@ -12,6 +12,7 @@
 <html>
     <head>
         <title>Servlet ExcluirGrupoServlet</title>
+        <link rel="stylesheet" type="text/css" href="../css/estilo.css">
     </head>
     <body>
         <h1>Exclur Grupo</h1>

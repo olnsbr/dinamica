@@ -4,6 +4,7 @@
  */
 package teste;
 
+import com.sun.xml.internal.ws.encoding.soap.SOAP12Constants;
 import dao.GrupoDAO;
 import excecao.BDException;
 import excecao.ConexaoException;
@@ -34,7 +35,9 @@ public class TestaGrupo {
 //            System.out.println(grup.getNome());           
 //        }
         grupo.setCodigo(2L);
-        grupo.setNome("Suportes");
-        grupoDAO.alterar(grupo);
+        grupo = grupoDAO.consultarPorCodigo(grupo);
+        
+        System.out.println(grupo.getNome());
+        System.out.println(grupo.getCodigo());
     }
 }

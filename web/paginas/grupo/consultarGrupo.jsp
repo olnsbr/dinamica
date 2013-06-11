@@ -12,6 +12,7 @@
 <html>
     <head>
         <title>Servlet ConsultarGrupoServlet</title>
+        <link rel="stylesheet" type="text/css" href="../css/estilo.css">
     </head>
     <%
 
@@ -39,6 +40,7 @@
         <p>Nome: <%=grup.getNome()%> </p>
         <form name='consultarGrupo'>
             <a href='alterarGrupo.jsp?codigo=<%=grup.getCodigo()%>'> <input type='button' name='alterar' value='Alterar'></a>
+            <a href='alterarDados.jsp?codigo=<%=grup.getCodigo()%>'> <input type='button' name='dados' value='Alterar Dados'></a>
             <a href='excluirGrupo.jsp?codigo=<%=grup.getCodigo()%>'> <input type='button' name='excluir' value='Excluir'></a>
             <a href='pesquisarGrupo.jsp'><input type='button' name='cancelar' value='Cancelar'></a>
         </form>
