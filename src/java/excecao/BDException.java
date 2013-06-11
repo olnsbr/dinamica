@@ -16,5 +16,9 @@ public class BDException extends Exception{
     public BDException(String string, Throwable thrwbl) {
         super(string, thrwbl);
     }
+
+    public BDException(String string, Throwable thrwbl, boolean bln, boolean bln1) {
+        super(string, thrwbl, bln, bln1);
+    }
     
 }

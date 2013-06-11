@@ -65,6 +65,17 @@ public class testaAcao {
             System.out.println(acao1.getDescricao());
             
         }
+        
+        acao.setCodigo(5L);
+        
+        aDAO.removerGrupo(acao, grup);
+        
+        System.out.println("\nAcoes que o Grupo tem apos remover:");
+        for (Acao acao1 : acoesG) {
+            
+            System.out.println(acao1.getDescricao());
+            
+        }
 
 
     }

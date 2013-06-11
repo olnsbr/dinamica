@@ -41,6 +41,8 @@ public class CadastrarAcaoServlet extends HttpServlet {
 
             saida.println("<p>Acao:");
             saida.println("<input type='text' name='acao'/></p>");
+            saida.println("<p>Componente:");
+            saida.println("<input type='text' name='componente'/></p>");
             
             
             
@@ -55,6 +57,7 @@ public class CadastrarAcaoServlet extends HttpServlet {
             if (p != null) {
                 
                 a.setDescricao(request.getParameter("acao"));
+                a.setComponente(request.getParameter("componente"));
                 dao.inserir(a);
                 
             }

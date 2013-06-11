@@ -32,7 +32,8 @@
         
         %>
         
-        <p>Tem Certeza que deseja excluir a Grupo <%=cid.getNome()%>?</p>
+        <p>Tem Certeza que deseja excluir o Grupo <%=cid.getNome()%>?</p>
+        <p>Atenção! O grupo será excluido mesmo que tenha Ações associadas!!!</p>
 
         <form name='excluirGrupo'>
             <a href='excluirGrupo.jsp?codigo=<%=cid.getCodigo()%>&sim=true'> <input type='button' name='sim' value='Sim'></a>

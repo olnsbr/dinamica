@@ -25,10 +25,12 @@
 
         <jsp:setProperty name="controleUsuario" property="usuario" value="${controleUsuario.consultar(user)}"/> 
 
-        <form action='consultarUsuario.jsp?codigo=${usuario.codigo}'>
-            <fieldset>  
+        <form action='consultarUsuario.jsp'>
+            <fieldset>
+
                 <label for="codigo"><b>Codigo:</b></label><br/>
                 ${controleUsuario.usuario.codigo}<br/>
+                <input type="hidden" name="codigo" value="${controleUsuario.usuario.codigo}"/>
 
                 <label for="nome">Nome:</label><br/>
                 <input type="text" name="nome" value="${controleUsuario.usuario.nome}" maxlength="30" size="90"/><br/>
@@ -40,29 +42,41 @@
                 <input type="text" name="telefone" value="${controleUsuario.usuario.telefone}" maxlength="30" size="90"/><br/>
 
                 <label for="grupo">Grupo:</label><br/>
+
                 <select name='grupo'>                   
 
                     <c:forEach var="grupo" items="${controleGrupo.grupos}">
-                        <option value="${grupo.codigo}">${grupo.nome}</option>
+
+                        <c:if test="${grupo.codigo == controleUsuario.usuario.grupo.codigo}">
+
+                            <option value="${grupo.codigo}" selected="true">${grupo.nome}</option>    
+
+                        </c:if>
+
+                        <option value="${grupo.codigo}" sel>${grupo.nome}</option>
+
+
                     </c:forEach>
 
                 </select>
-            </fieldset>              
+
+            </fieldset>
+
 
             <SCRIPT LANGUAGE="JavaScript">
                 function cancelar() {
-                    window.location = "consultarUsuario.jsp?codigo=${usuario.codigo}";
+                    window.location = "consultarUsuario.jsp?codigo=${controleUsuario.usuario.codigo}";
                 }
             </script>
 
-            <input type='submit' name='alterar' value='Alterar'>
-            <input id="botaoCancelar" type="button" value="Cancelar" onClick="cancelar()"> 
+            <input type='submit' name='alterar' value='Alterar'/>
+            <input id="botaoCancelar" type="button" value="Cancelar" onClick="cancelar()"/> 
         </form>  
 
-        
-            <jsp:setProperty name="controleUsuario" property="usuario" value="${user}"/>
 
-            <%controleUsuario.alterar(user);%>
-       
+        <jsp:setProperty name="controleUsuario" property="usuario" value="${user}"/>
+
+
+
     </body>
 </html>

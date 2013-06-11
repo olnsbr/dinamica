@@ -25,54 +25,30 @@ public class testaUsuario {
         
         Usuario user = new Usuario();
         
-//        user.setNome("Ana");
-//        user.setEmail("ana@ana.com");
-//        user.setSenha("senha");
-//        user.setTelefone("12345");
-//        
-//        Grupo g = new Grupo();
-//        
-//        g.setNome("Suporte");
-//        g.setCodigo(2L);
-//        
-//        user.setGrupo(g);
-        
         UsuarioDAO uDAO = new UsuarioDAO(controlaConexao.getConexao());
-        
-//        uDAO.inserir(user);
-//        
         List<Usuario> lista = new ArrayList<>();
         
         lista = uDAO.pesquisar(new Usuario(""));
         
-//        for (Usuario usuario : lista) {
-//            
-//            System.out.println(usuario.getCodigo());
-//            System.out.println(usuario.getNome());
-//            System.out.println(usuario.getEmail());
-//            System.out.println(usuario.getTelefone());
-//            System.out.println(usuario.getSenha());
-//            
-//        }
-//        
-//        user.setCodigo(6L);
-//        Usuario uConsult = uDAO.consultar(user);
-//        
-//        System.out.println(uConsult.getCodigo());
-//        System.out.println(uConsult.getNome());
-//        System.out.println(uConsult.getEmail());
-//        System.out.println(uConsult.getTelefone());
-//        System.out.println(uConsult.getSenha());
+        for (Usuario usuario : lista) {
+            
+            if (usuario.getCodigo() == 7) {
+                
+                usuario.setEmail("zinho");
+                
+                user = usuario;
+                
+            }
+            
+        }
         
-        user.setCodigo(12L);
-        user.setNome("nome");
-        Grupo g = new Grupo();
+        System.out.println(user.getNome());
+        System.out.println(user.getEmail());
+        System.out.println(user.getTelefone());
+        System.out.println(user.getGrupo().getNome());
         
-        g.setNome("Analista");
-        g.setCodigo(3L);
+        uDAO.alterar(user);
         
-        user.setGrupo(g);
-        uDAO.alterar(user);      
     }
     
 }

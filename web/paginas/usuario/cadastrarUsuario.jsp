@@ -27,7 +27,7 @@
                 <input type="text" name="nome" value="${user.nome}" maxlength="30" size="90"/><br/>
 
                 <label for="email">Email:</label><br/>
-                <input type="text" name="email" value="${user.email}" maxlength="30" size="90"/><br/>
+                <input type="email" name="email" value="${user.email}" maxlength="30" size="90"/><br/>
 
                 <label for="telefone">Telefone:</label><br/>
                 <input type="text" name="telefone" value="${user.telefone}" maxlength="30" size="90"/><br/>

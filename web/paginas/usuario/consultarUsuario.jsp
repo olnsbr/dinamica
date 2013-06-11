@@ -22,7 +22,21 @@
         <jsp:useBean id = "grup" class="modelo.Grupo"/>
 
         <jsp:setProperty name="user" property="codigo" value="${param.codigo}"/>
-
+        
+        <c:if test="${not empty param.alterar}">
+            
+            
+            <jsp:setProperty name="user" property="codigo" value="${param.codigo}"/>
+            <jsp:setProperty name="user" property="nome" value="${param.nome}"/>
+            <jsp:setProperty name="user" property="email" value="${param.email}"/>
+            <jsp:setProperty name="user" property="telefone" value="${param.telefone}"/>
+            <jsp:setProperty name="grup" property="codigo" value="${param.grupo}"/>
+            <jsp:setProperty name="user" property="grupo" value="${grup}"/>
+            
+            ${controleUsuario.alterar(user)}
+            
+        </c:if>
+        
         <jsp:setProperty name="controleUsuario" property="usuario" value="${controleUsuario.consultar(user)}"/>          
 
         <fieldset>
@@ -58,7 +72,7 @@
         </script>
         
         
-        <input type='button' name='alterar' value='Alterar' onclick="alterar()"/>
+        <input type='button' name='alterar' value='Alterar' onclick="alterar(${user.codigo})"/>
         <input type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha()"/>
         <input type='submit' name='excluir' value='Excluir'/>
         <input id="botaoCancelar" type="button" value="Cancelar" onclick="cancelar()"/>
