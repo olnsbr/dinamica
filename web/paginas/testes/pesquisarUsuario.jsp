@@ -11,14 +11,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
         <title>Pesquisar Usuario</title>
     </head>
 
     <body>
-        <div id="topo">
-            <h1>Pesquisar Usuario</h1>
-        </div>
+        
+            <h1 class="text-left">Pesquisar Usuario</h1>
+        
 
         <jsp:useBean id = "controle" class="controle.UsuarioControle"/>
         <jsp:useBean id = "user" class="modelo.Usuario"/>

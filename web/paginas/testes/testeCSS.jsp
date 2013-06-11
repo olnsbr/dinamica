@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/estilo_1.css">
+        <link rel="stylesheet" type="text/css" href="./estilo_1.css">
         <title>JSP Page</title>
     </head>
     <body>

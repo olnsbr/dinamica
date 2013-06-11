@@ -9,74 +9,125 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/estilo.css">
+        <meta charset="utf-8"/>
+        <meta name="description" content="Teste Bootstrap"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../css/bootstrap.css" rel="stylesheet" media="screen"/>
+        <link href="../css/bootstrap-responsive.css" rel="stylesheet" media="screen"/>
+        <link href="../css/estilo.css" rel="stylesheet" media="screen"/>
         <title>Consultar Usuario</title>
     </head>
     <body>
-        <h1>Consultar Usuario</h1>
+        <div id="wrap">
+            <div class="container-fluid">
 
-        <jsp:useBean id = "controleUsuario" class="controle.UsuarioControle"/>
-        <jsp:useBean id = "user" class="modelo.Usuario"/>
-        <jsp:useBean id = "controleGrupo" class="controle.GrupoControle"/>
-        <jsp:useBean id = "grup" class="modelo.Grupo"/>
+                <div class="row-fluid">
+                    <div class="span12 topo">
+                        <h1 class="h1">CRUDY!</h1>
+                    </div>
 
-        <jsp:setProperty name="user" property="codigo" value="${param.codigo}"/>
-        
-        <c:if test="${not empty param.alterar}">
-            
-            
-            <jsp:setProperty name="user" property="codigo" value="${param.codigo}"/>
-            <jsp:setProperty name="user" property="nome" value="${param.nome}"/>
-            <jsp:setProperty name="user" property="email" value="${param.email}"/>
-            <jsp:setProperty name="user" property="telefone" value="${param.telefone}"/>
-            <jsp:setProperty name="grup" property="codigo" value="${param.grupo}"/>
-            <jsp:setProperty name="user" property="grupo" value="${grup}"/>
-            
-            ${controleUsuario.alterar(user)}
-            
-        </c:if>
-        
-        <jsp:setProperty name="controleUsuario" property="usuario" value="${controleUsuario.consultar(user)}"/>          
+                    <div class="row-fluid">
+                        <div class=" row-fluid span12 corTopo">
+                            <ul class="nav nav-list">
+                                <li class="active"><a href="../home.jsp"><i class="icon-home icon-white"></i> Início</a></li>                            
+                            </ul>                    
+                        </div>                    
+                    </div>
 
-        <fieldset>
-            <label for="codigo"><b>Codigo:</b></label><br/>
-            ${controleUsuario.usuario.codigo}<br/>
+                    <div class="row-fluid">
+                        <div class="span2">
+                            <!--conteúdo da lateral-->
+                            <div class="tabbable tabs-left">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="../usuario/pesquisarUsuario.jsp" data-toggle="tab"><h4>Usuários</h4></a></li>
+                                    <li><a href="../grupo/pesquisarGrupo.jsp" data-toggle="tab"><h4>Grupos</h4></a></li>
+                                    <li><a href="#tab2" data-toggle="tab"><h4>Ações</h4></a></li>
+                                </ul>
+                                <div class="tab-content">
 
-            <label for="nome"><b>Nome:</b></label><br/>
-            ${controleUsuario.usuario.nome} <br/>
+                                </div>
+                            </div>
+                        </div>
 
-            <label for="email"><b>Email:</b></label><br/>
-            ${controleUsuario.usuario.email}<br/>
+                        <div class="span10">
+                            <!--conteúdo do corpo-->
+                            <h2>Consultar Usuario</h2>
 
-            <label for="telefone"><b>Telefone:</b></label><br/>
-            ${controleUsuario.usuario.telefone}<br/>
+                            <jsp:useBean id = "controleUsuario" class="controle.UsuarioControle"/>
+                            <jsp:useBean id = "user" class="modelo.Usuario"/>
+                            <jsp:useBean id = "controleGrupo" class="controle.GrupoControle"/>
+                            <jsp:useBean id = "grup" class="modelo.Grupo"/>
 
-            <label for="grupo"><b>Grupo:</b></label><br/>
-            ${controleUsuario.usuario.grupo.nome}<br/>
-        </fieldset> 
+                            <jsp:setProperty name="user" property="codigo" value="${param.codigo}"/>
 
-        <SCRIPT LANGUAGE="JavaScript">
-            function cancelar() {
-                window.location = "pesquisarUsuario.jsp";
-            }
-            function alterar(cod) {
-                window.location = "alterarUsuario.jsp?codigo="+cod;
-            }
-            function alterarSenha() {
-                window.location = "alterarSenhaUsuario.jsp?codigo=${usuario.codigo}";
-            }
-            function excluir() {
-                window.location = "pesquisarUsuario.jsp";
-            }
-        </script>
-        
-        
-        <input type='button' name='alterar' value='Alterar' onclick="alterar(${user.codigo})"/>
-        <input type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha()"/>
-        <input type='submit' name='excluir' value='Excluir'/>
-        <input id="botaoCancelar" type="button" value="Cancelar" onclick="cancelar()"/>
-        
+                            <c:if test="${not empty param.alterar}">
+
+
+                                <jsp:setProperty name="user" property="codigo" value="${param.codigo}"/>
+                                <jsp:setProperty name="user" property="nome" value="${param.nome}"/>
+                                <jsp:setProperty name="user" property="email" value="${param.email}"/>
+                                <jsp:setProperty name="user" property="telefone" value="${param.telefone}"/>
+                                <jsp:setProperty name="grup" property="codigo" value="${param.grupo}"/>
+                                <jsp:setProperty name="user" property="grupo" value="${grup}"/>
+
+                                ${controleUsuario.alterar(user)}
+
+                            </c:if>
+
+                            <jsp:setProperty name="controleUsuario" property="usuario" value="${controleUsuario.consultar(user)}"/>          
+
+                            <fieldset>
+                                <label><b>Codigo:</b></label>
+                                <span class="input-xlarge uneditable-input">${controleUsuario.usuario.codigo}</span><br/>
+
+                                <label><b>Nome:</b></label>
+                                <span class="input-xlarge uneditable-input">${controleUsuario.usuario.nome}</span><br/>
+
+                                <label><b>Email:</b></label>
+                                <span class="input-xlarge uneditable-input">${controleUsuario.usuario.email}</span><br/>
+
+                                <label><b>Telefone:</b></label>
+                                <span class="input-xlarge uneditable-input">${controleUsuario.usuario.telefone}</span><br/>
+
+                                <label><b>Grupo:</b></label>
+                                <span class="input-xlarge uneditable-input">${controleUsuario.usuario.grupo.nome}</span><br/><br/>
+                            </fieldset> 
+
+                            <SCRIPT LANGUAGE="JavaScript">
+                                function cancelar() {
+                                    window.location = "pesquisarUsuario.jsp";
+                                }
+                                function alterar(cod) {
+                                    window.location = "alterarUsuario.jsp?codigo=" + cod;
+                                }
+                                function alterarSenha() {
+                                    window.location = "alterarSenhaUsuario.jsp?codigo=${usuario.codigo}";
+                                }
+                                function excluir() {
+                                    window.location = "pesquisarUsuario.jsp";
+                                }
+                            </script>
+
+                            <input class="btn" type='button' name='alterar' value='Alterar' onclick="alterar(${user.codigo})"/>
+                            <input class="btn" type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha()"/>
+                            <input class="btn" type='submit' name='excluir' value='Excluir'/>
+                            <input class="btn" type="button" value="Cancelar" onclick="cancelar()"/>
+                        </div>
+
+                    </div>
+
+                    <div class="span12 topo"></div>
+                </div>
+            </div>
+                            
+            <div id="push"></div> 
+        </div>
+
+        <div id="footer">
+            <div class="container-fluid">
+                <h4 class="h4">@Todos os direitos reservados.</h4>
+            </div>
+        </div>
     </body>
 </body>
 </html>

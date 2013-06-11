@@ -6,64 +6,79 @@
         Purpose of the stylesheet follows.
 */
 
-html{
-    height: 100%;
-    width: 100%;
+.topo{
+    padding: 10px;
+    background-color: whitesmoke;
 }
 
-#header {
-      float:left;
-      width:100%;
-      background:#DAE0D2 url("img.jpg") repeat-x bottom;
-      font-size:93%;
-      line-height:normal;
+.cor3, .cor2{
+    padding: 30px;
 }
-#header ul {
-      margin:0;
-      padding:10px 10px 0;
-      list-style:none;
+
+.corTopo{
+    padding: 10px;
+    background-color: #E6E6FA;    
 }
-#header li {
-      float:left;
-      background:url("left_both.gif") no-repeat left top;
-      margin:0;
-      padding:0 0 0 9px;
-      border-bottom:1px solid #765;
+
+.cor2{
+    background-color: whitesmoke;
 }
-#header a {
-      float:left;
-      display:block;
-      width:.1em;
-      background:url("right_both.gif") no-repeat right top;
-      padding:5px 15px 4px 6px;
-      text-decoration:none;
-      font-weight:bold;
-      color:#765;
+
+.cor3{
+    background-color: whitesmoke;
 }
-#header > ul a {width:auto;}
-    /* Commented Backslash Hack hides rule from IE5-Mac \*/
-#header a {float:none;}
-    /* End IE5-Mac hack */
-#header a:hover {
-      color:#333;
+
+.corRodape{
+    padding: 8px;
+    background-color: #4A708B;
 }
-#home #nav-home, #news #nav-news,
-#products #nav-products, #about #nav-about,
-#contact #nav-contact {
-      background-position:0 -150px;
-      border-width:0;
+
+.h4{
+    text-align: center;
+    color: whitesmoke;
 }
-#home #nav-home a, #news #nav-news a,
-#products #nav-products a, #about #nav-about a,
-#contact #nav-contact a {
-      background-position:100% -150px;
-      padding-bottom:5px;
-      color:#333;
+
+.h1{
+    text-align: center;
+    color: #CD661D;
 }
-#header li:hover, #header li:hover a {
-      background-position:0% -150px;
-      color:#333;
+.tableborda{
+    border: 10px;
 }
-#header li:hover a {
-      background-position:100% -150px;
+
+/* Sticky footer styles
+      -------------------------------------------------- */
+html,
+body {
+    height: 100%;
+    background-color: whitesmoke
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: 60px;
+}
+#footer {
+    background-color: #8B4513;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }

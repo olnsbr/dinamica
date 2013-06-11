@@ -9,68 +9,120 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="../css/estilo.css">        
+        <meta charset="utf-8"/>
+        <meta name="description" content="Teste Bootstrap"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="../css/bootstrap.css" rel="stylesheet" media="screen"/>
+        <link href="../css/bootstrap-responsive.css" rel="stylesheet" media="screen"/>
+        <link href="../css/estilo.css" rel="stylesheet" media="screen"/>        
         <title>Cadastrar Usuario</title>
     </head>
     <body>
-        <h1>Cadastrar Usuario</h1>
+        <div id="wrap">
+            <div class="container-fluid">
 
-        <jsp:useBean id = "controleUsuario" class="controle.UsuarioControle"/>
-        <jsp:useBean id = "user" class="modelo.Usuario"/>
-        <jsp:useBean id = "controleGrupo" class="controle.GrupoControle"/>
-        <jsp:useBean id = "grup" class="modelo.Grupo"/>
+                <div class="row-fluid">
+                    <div class="span12 topo">
+                        <h1 class="h1">CRUDY!</h1>
+                    </div>
 
-        <form action='cadastrarUsuario.jsp'>
-            <fieldset>                
-                <label for="nome">Nome:</label><br/>
-                <input type="text" name="nome" value="${user.nome}" maxlength="30" size="90"/><br/>
+                    <div class="row-fluid">
+                        <div class=" row-fluid span12 corTopo">
+                            <ul class="nav nav-list">
+                                <li class="active"><a href="../home.jsp"><i class="icon-home icon-white"></i> Início</a></li>                            
+                            </ul>                    
+                        </div>                    
+                    </div>
 
-                <label for="email">Email:</label><br/>
-                <input type="email" name="email" value="${user.email}" maxlength="30" size="90"/><br/>
+                    <div class="row-fluid">
+                        <div class="span2">
+                            <!--conteúdo da lateral-->
+                            <div class="tabbable tabs-left">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a href="../usuario/pesquisarUsuario.jsp" data-toggle="tab"><h4>Usuários</h4></a></li>
+                                    <li><a href="../grupo/pesquisarGrupo.jsp" data-toggle="tab"><h4>Grupos</h4></a></li>
+                                    <li><a href="#tab2" data-toggle="tab"><h4>Ações</h4></a></li>
+                                </ul>
+                                <div class="tab-content">
 
-                <label for="telefone">Telefone:</label><br/>
-                <input type="text" name="telefone" value="${user.telefone}" maxlength="30" size="90"/><br/>
+                                </div>
+                            </div>
+                        </div>
 
-                <label for="grupo">Grupo:</label><br/>
-                <select name='grupo'>
+                        <div class="span10">
+                            <!--conteúdo do corpo-->
+                            <h2>Cadastrar Usuario</h2>
 
-                    <c:forEach var="grupo" items="${controleGrupo.grupos}">
-                        <option value="${grupo.codigo}">${grupo.nome}</option>
-                    </c:forEach>
+                            <jsp:useBean id = "controleUsuario" class="controle.UsuarioControle"/>
+                            <jsp:useBean id = "user" class="modelo.Usuario"/>
+                            <jsp:useBean id = "controleGrupo" class="controle.GrupoControle"/>
+                            <jsp:useBean id = "grup" class="modelo.Grupo"/>
 
-                </select>
-                <br/>
+                            <form action='cadastrarUsuario.jsp'>
+                                <fieldset>                
+                                    <label>Nome:</label>
+                                    <input type="text" placeholder="Digite seu nome..." name="nome" value="${user.nome}" maxlength="30" size="90"/><br/>
 
-                <label for="senha">Senha:</label><br/>
-                <input type="password" name="senha" value="${user.senha}" maxlength="30" size="90"/><br/>
+                                    <label>Email:</label>
+                                    <input type="email" placeholder="email@email.com" name="email" value="${user.email}" maxlength="30" size="90"/><br/>
 
-                <label for="confirma">Confirmar Senha:</label><br/>
-                <input type="password" name="telefone" maxlength="30" size="90"/><br/><%--ver esse negocio aqui depois--%>
+                                    <label>Telefone:</label>
+                                    <input type="text" placeholder="(00) 9999-9999" name="telefone" value="${user.telefone}" maxlength="30" size="90"/><br/>
 
-            </fieldset>  
+                                    <label>Grupo:</label>
+                                    <select name='grupo'>
 
-            <input type='submit' name='salvar' value='Salvar'>
+                                        <c:forEach var="grupo" items="${controleGrupo.grupos}">
+                                            <option value="${grupo.codigo}">${grupo.nome}</option>
+                                        </c:forEach>
 
-            <SCRIPT LANGUAGE="JavaScript">
-                function cancelar() {
-                    window.location = "pesquisarUsuario.jsp";
-                }
-            </script>
+                                    </select>
+                                    <br/>
 
-            <input id="botaoCancelar" type="button" value="Cancelar" onClick="cancelar()">
-        </form>
+                                    <label>Senha:</label>
+                                    <input type="password" name="senha" value="${user.senha}" maxlength="30" size="90"/><br/>
 
-        <c:if test="${not empty param.salvar}">
-            <jsp:setProperty name="user" property="nome" value="${param.nome}"/>
-            <jsp:setProperty name="user" property="email" value="${param.email}"/>
-            <jsp:setProperty name="user" property="telefone" value="${param.telefone}"/>
-            <jsp:setProperty name="grup" property="codigo" value="${param.grupo}"/>
-            <jsp:setProperty name="user" property="grupo" value="${grup}"/>
-            <jsp:setProperty name="user" property="senha" value="${param.senha}"/>
-            <jsp:setProperty name="controleUsuario" property="usuario" value="${user}"/>
+                                    <label>Confirmar Senha:</label>
+                                    <input type="password" name="telefone" maxlength="30" size="90"/><br/><%--ver esse negocio aqui depois--%>
 
-            <%controleUsuario.cadastrar();%>
-        </c:if>        
+                                </fieldset>  
+
+                                <input class="btn" type='submit' name='salvar' value='Salvar'>
+
+                                <SCRIPT LANGUAGE="JavaScript">
+                                    function cancelar() {
+                                        window.location = "pesquisarUsuario.jsp";
+                                    }
+                                </script>
+
+                                <input class="btn" type="button" value="Cancelar" onClick="cancelar()">
+                            </form>
+
+                            <c:if test="${not empty param.salvar}">
+                                <jsp:setProperty name="user" property="nome" value="${param.nome}"/>
+                                <jsp:setProperty name="user" property="email" value="${param.email}"/>
+                                <jsp:setProperty name="user" property="telefone" value="${param.telefone}"/>
+                                <jsp:setProperty name="grup" property="codigo" value="${param.grupo}"/>
+                                <jsp:setProperty name="user" property="grupo" value="${grup}"/>
+                                <jsp:setProperty name="user" property="senha" value="${param.senha}"/>
+                                <jsp:setProperty name="controleUsuario" property="usuario" value="${user}"/>
+
+                                <%controleUsuario.cadastrar();%>
+                            </c:if>
+                        </div>
+                    </div>
+
+                    <div class="span12 topo"></div>
+
+                </div>
+            </div>
+            <div id="push"></div> 
+        </div>
+
+        <div id="footer">
+            <div class="container-fluid">
+                <h4 class="h4">@Todos os direitos reservados.</h4>
+            </div>
+        </div> 
     </body>
 </html>

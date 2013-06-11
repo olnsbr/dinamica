@@ -11,9 +11,9 @@
         <meta charset="utf-8"/>
         <meta name="description" content="Teste Bootstrap"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="../paginas/css/bootstrap.css" rel="stylesheet" media="screen"/>
-        <link href="../paginas/css/bootstrap-responsive.css" rel="stylesheet" media="screen"/>
-        <link href="../paginas/css/estilo.css" rel="stylesheet" media="screen"/>
+        <link href="../css/bootstrap.css" rel="stylesheet" media="screen"/>
+        <link href="../css/bootstrap-responsive.css" rel="stylesheet" media="screen"/>
+        <link href="../css/estilo.css" rel="stylesheet" media="screen"/>
         <title>Home</title>
     </head>
     <body>
@@ -21,7 +21,6 @@
             <div class="container-fluid">
 
                 <div class="row-fluid">
-                    
                     <div class="span12 topo">
                     </div>
 
@@ -35,19 +34,15 @@
                     
                     <div class="row-fluid">
                         <div class="span4 cor2">
-                            <a class="btn btn-large" href="../paginas/usuario/pesquisarUsuario.jsp"><img src="../paginas/img/casal.png" class="img-rounded">
+                            <button class="btn btn-large" type="button"><img src="../img/casal.png" class="img-rounded">
                                 <abbr title="Acesse os usuários"><h4>Usuários</h4></abbr>
-                            </a>
+                            </button>
                         </div>  
                         <div class="span4 cor2">
-                            <a class="btn btn-large" href="../paginas/grupo/pesquisarGrupo.jsp"><img src="../paginas/img/grupo.png" class="img-rounded">
-                                <abbr title="Acesse os grupos"><h4>Grupos</h4></abbr>
-                            </a>                            
+                            <button class="btn btn-large" type="button"><img src="../img/grupo.png" class="img-rounded"><h4>Grupos</h4></button>                            
                         </div> 
                         <div class="span4 cor2">
-                            <a class="btn btn-large" href="../pesquisarAcao"><img src="../paginas/img/acao.png" class="img-rounded">
-                                <abbr title="Acesse as ações"><h4>Ações</h4></abbr>
-                            </a>
+                            <button class="btn btn-large" type="button"><img src="../img/acao.png" class="img-rounded"><h4>Ações</h4></button>
                         </div> 
                     </div>
 
