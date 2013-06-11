@@ -56,6 +56,10 @@ public class CadastrarAcaoServlet extends HttpServlet {
             
             if (p != null) {
                 
+                saida.println("<SCRIPT LANGUAGE=\"JavaScript\">");
+                saida.println("alert('Registro incluído com sucesso!');");
+                saida.println("</script>");
+                
                 a.setDescricao(request.getParameter("acao"));
                 a.setComponente(request.getParameter("componente"));
                 dao.inserir(a);

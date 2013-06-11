@@ -104,14 +104,26 @@
                                     window.location = "alterarSenhaUsuario.jsp?codigo=${usuario.codigo}";
                                 }
                                 function excluir() {
-                                    window.location = "pesquisarUsuario.jsp";
+                                    
+                                    decisao = confirm("Tem Certeza ?");
+                                    
+                                    if (decisao) {
+                                        
+                                        ${controleUsuario.excluir(user)}
+                                        alert("Usuário excluido com sucesso!");
+                                        window.location = "pesquisarUsuario.jsp";
+                                        
+                                    } else {
+                                        alert("Tudo bem, vamos manter o usuário cadastrado.");
+                                    }
+                                    
                                 }
                             </script>
 
-                            <input class="btn" type='button' name='alterar' value='Alterar' onclick="alterar(${user.codigo})"/>
-                            <input class="btn" type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha()"/>
-                            <input class="btn" type='submit' name='excluir' value='Excluir'/>
-                            <input class="btn" type="button" value="Cancelar" onclick="cancelar()"/>
+                            <input class="btn" type='button' name='alterar' value='Alterar' onclick="alterar(${user.codigo});"/>
+                            <!--<input class="btn" type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha();"/>-->
+                            <input class="btn" type='button' name='excluir' value='Excluir' onclick="excluir();"/>
+                            <input class="btn" type="button" value="Cancelar" onclick="cancelar();"/>
                         </div>
 
                     </div>
@@ -119,7 +131,7 @@
                     <div class="span12 topo"></div>
                 </div>
             </div>
-                            
+
             <div id="push"></div> 
         </div>
 

@@ -4,6 +4,7 @@
     Author     : oddy
 --%>
 
+<%@page import="javax.swing.JOptionPane"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dao.GrupoDAO"%>
@@ -17,7 +18,7 @@
         <link rel="stylesheet" type="text/css" href="../css/estilo.css">
         <title>Cadastrar Grupo</title>
     </head>
-    <%        
+    <%
         ControlaConexao controlaConexao = new ControlaConexao("config.txt");
         Grupo c = new Grupo();
         GrupoDAO dao = new GrupoDAO(controlaConexao.getConexao());
@@ -27,17 +28,26 @@
         <form action='cadastrarGrupo.jsp'>
             <p>Grupo:
                 <input type='text' name='grupo'/></p>
+
+            <%
+                String p = request.getParameter("cadastrar");
+
+                if (p != null) {
+
+            %>
             
-                <%                    
-                    String p = request.getParameter("cadastrar");
-                    
-                    if (p != null) {
-                        
-                        c.setNome(request.getParameter("grupo"));
-                        dao.inserir(c);
-                        
-                    }
-                %>
+            <SCRIPT LANGUAGE="JavaScript">
+
+                alert("Registro incluído com sucesso!");
+
+            </script>
+
+            <%
+
+                    c.setNome(request.getParameter("grupo"));
+                    dao.inserir(c);
+                }
+            %>
             <input type='submit' name='cadastrar' value='Cadastrar'>
             <a href='pesquisarGrupo.jsp'><input type='button' name='cancelar' value='Cancelar'></a>
         </form>

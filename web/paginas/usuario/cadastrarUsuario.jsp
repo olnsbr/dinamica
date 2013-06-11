@@ -16,6 +16,78 @@
         <link href="../css/bootstrap-responsive.css" rel="stylesheet" media="screen"/>
         <link href="../css/estilo.css" rel="stylesheet" media="screen"/>        
         <title>Cadastrar Usuario</title>
+        <script>
+            function IsNum(v)
+
+            {
+                var ValidChars = "0123456789";
+                var IsNumber = true;
+                var Char;
+
+
+                for (i = 0; i < v.length && IsNumber == true; i++)
+                {
+                    Char = v.charAt(i);
+                    if (ValidChars.indexOf(Char) == -1)
+                    {
+                        IsNumber = false;
+                    }
+                }
+                return IsNumber;
+
+            }
+
+            function valida(form) {
+                if (form.nome.value == "") {
+                    alert("Preencha o nome corretamente.");
+                    form.nome.focus();
+                    return false;
+                }
+
+                if (form.tel.value == "") {
+                    alert("Preencha o telefone corretamente.");
+                    form.tel.focus();
+                    return false;
+                }
+
+                if (form.senha.value == "" || form.senha.value.length < 6) {
+                    alert("Preencha a senha corretamente.");
+                    form.senha.focus();
+                    return false;
+                }
+
+                if (form.conf_senha.value == "" || form.conf_senha.value.length < 6) {
+                    alert("Preencha a confirmação de senha corretamente.");
+                    form.conf_senha.focus();
+                    return false;
+                }
+
+                if (form.senha.value != form.conf_senha.value) {
+                    alert("A senha e a confirmação tem de ser iguais.");
+                    form.conf_senha.focus();
+                    return false;
+                }
+
+            }
+
+            function telefone(f) {
+                if (f.tel.value.length < 9 || f.tel.value.length > 10) {
+                    alert("Preencha o telefone corretamente.");
+                    f.tel.focus();
+                } else {
+                    ddd = f.tel.value.substring(0, 2);
+                    if (f.tel.value.length == 9) {
+                        part1 = f.tel.value.substring(2, 5);
+                        part2 = f.tel.value.substring(5, 9);
+                    }
+                    if (f.tel.value.length == 10) {
+                        part1 = f.tel.value.substring(2, 6);
+                        part2 = f.tel.value.substring(6, 10);
+                    }
+                    f.tel.value = "(" + ddd + ") " + part1 + "-" + part2
+                }
+            }
+        </script>
     </head>
     <body>
         <div id="wrap">
@@ -58,7 +130,7 @@
                             <jsp:useBean id = "controleGrupo" class="controle.GrupoControle"/>
                             <jsp:useBean id = "grup" class="modelo.Grupo"/>
 
-                            <form action='cadastrarUsuario.jsp'>
+                            <form action='cadastrarUsuario.jsp' onsubmit="return valida(this)">
                                 <fieldset>                
                                     <label>Nome:</label>
                                     <input type="text" placeholder="Digite seu nome..." name="nome" value="${user.nome}" maxlength="30" size="90"/><br/>
@@ -67,7 +139,7 @@
                                     <input type="email" placeholder="email@email.com" name="email" value="${user.email}" maxlength="30" size="90"/><br/>
 
                                     <label>Telefone:</label>
-                                    <input type="text" placeholder="(00) 9999-9999" name="telefone" value="${user.telefone}" maxlength="30" size="90"/><br/>
+                                    <input type="text" placeholder="(00) 9999-9999" name="tel" value="${user.telefone}" maxlength="30" size="90"/><br/>
 
                                     <label>Grupo:</label>
                                     <select name='grupo'>
@@ -81,9 +153,8 @@
 
                                     <label>Senha:</label>
                                     <input type="password" name="senha" value="${user.senha}" maxlength="30" size="90"/><br/>
-
                                     <label>Confirmar Senha:</label>
-                                    <input type="password" name="telefone" maxlength="30" size="90"/><br/><%--ver esse negocio aqui depois--%>
+                                    <input type="password" name="conf_senha" value="${user.senha}" maxlength="30" size="90"/><br/>
 
                                 </fieldset>  
 
@@ -106,6 +177,12 @@
                                 <jsp:setProperty name="user" property="grupo" value="${grup}"/>
                                 <jsp:setProperty name="user" property="senha" value="${param.senha}"/>
                                 <jsp:setProperty name="controleUsuario" property="usuario" value="${user}"/>
+
+                                <SCRIPT LANGUAGE="JavaScript">
+
+                                    alert("Registro incluído com sucesso!");
+
+                                </script>
 
                                 <%controleUsuario.cadastrar();%>
                             </c:if>

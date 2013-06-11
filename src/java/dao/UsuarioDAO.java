@@ -97,10 +97,11 @@ public class UsuarioDAO {
     public List<Usuario> pesquisar(Usuario usuario) throws BDException {
         List<Usuario> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM usuario inner join grupo on usuario.codgrupo = grupo.codigo WHERE usuario.nome like ?";
+        String sql = "SELECT * FROM usuario inner join grupo on usuario.codgrupo = grupo.codigo WHERE usuario.nome like ? AND usuario.email like ?";
         
         try (PreparedStatement instrucao = connection.prepareStatement(sql)) {
             instrucao.setString(1, "%" + usuario.getNome() + "%");
+            instrucao.setString(2, "%" + usuario.getEmail()+ "%");
             ResultSet rs = instrucao.executeQuery();                       
 
             while (rs.next()) {

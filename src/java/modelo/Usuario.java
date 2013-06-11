@@ -24,6 +24,10 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public Usuario(String nome, String email) {
+        this.nome = nome;
+        this.email = email;
+    }
     public long getCodigo() {
         return codigo;
     }

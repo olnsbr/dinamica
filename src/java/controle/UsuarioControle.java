@@ -18,7 +18,7 @@ import util.ControlaConexao;
  */
 public final class UsuarioControle {
 
-    private Usuario usuario = new Usuario("");
+    private Usuario usuario = new Usuario("","");
     private List<Usuario> usuarios = new ArrayList<>();
 
     public UsuarioControle() throws ConexaoException, BDException {
@@ -73,5 +73,15 @@ public final class UsuarioControle {
         UsuarioDAO usuarioDAO = new UsuarioDAO(controlaConexao.getConexao());
         
         usuarioDAO.alterar(usuario);
+    }
+    
+    public void excluir(Usuario usuario)throws ConexaoException, BDException{
+        
+      ControlaConexao controlaConexao = new ControlaConexao("config.txt");       
+
+        UsuarioDAO usuarioDAO = new UsuarioDAO(controlaConexao.getConexao());
+        
+        usuarioDAO.excluir(usuario);
+        
     }
 }
