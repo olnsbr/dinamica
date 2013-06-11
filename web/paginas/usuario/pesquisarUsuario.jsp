@@ -78,7 +78,15 @@
                                 <jsp:setProperty name="user" property="email" value="${param.email}"/>
                                 <jsp:setProperty name="controle" property="usuario" value="${user}"/>
                                 ${controle.pesquisar()}
-                            </c:if>            
+                            </c:if>
+                                
+                            <c:if test="${not empty param.dell}">                               
+                                
+                                <jsp:setProperty name="user" property="codigo" value="${param.dell}"/>
+                                ${controle.excluir(user)}
+                                ${controle.pesquisar()}
+
+                            </c:if>
 
                             <table class="table table-bordered">
                                 <tr class="warning"><th>Codigo</th><th>Nome</th><th>Email</th><th>Grupo</th></tr>
@@ -108,7 +116,7 @@
                             <input class="btn" type="button" value="Cancelar" onClick="cancelar()">
                         </div>
                     </div>
-                                
+
                     <div class="span12 topo"></div>
 
                 </div>
