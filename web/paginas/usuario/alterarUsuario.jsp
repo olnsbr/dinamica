@@ -89,6 +89,7 @@
                                             </c:if>
 
                                             <option value="${grupo.codigo}" sel>${grupo.nome}</option>
+                                            
                                         </c:forEach>
                                     </select>
 
