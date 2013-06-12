@@ -41,7 +41,7 @@
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="../usuario/pesquisarUsuario.jsp" data-toggle="tab"><h4>Usuários</h4></a></li>
                                     <li><a href="../grupo/pesquisarGrupo.jsp" data-toggle="tab"><h4>Grupos</h4></a></li>
-                                    <li><a href="#tab2" data-toggle="tab"><h4>Ações</h4></a></li>
+                                    <li><a href="../../pesquisarAcao" data-toggle="tab"><h4>Ações</h4></a></li>
                                 </ul>
                                 <div class="tab-content">
 
@@ -83,7 +83,7 @@
                                     <input type="password" name="senha" value="${user.senha}" maxlength="30" size="90"/><br/>
 
                                     <label>Confirmar Senha:</label>
-                                    <input type="password" name="telefone" maxlength="30" size="90"/><br/><%--ver esse negocio aqui depois--%>
+                                    <input type="password" name="confSenha" maxlength="30" size="90"/><br/><%--ver esse negocio aqui depois--%>
 
                                 </fieldset>  
 

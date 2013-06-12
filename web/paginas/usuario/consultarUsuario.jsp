@@ -41,7 +41,7 @@
                                 <ul class="nav nav-tabs">
                                     <li class="active"><a href="../usuario/pesquisarUsuario.jsp" data-toggle="tab"><h4>Usuários</h4></a></li>
                                     <li><a href="../grupo/pesquisarGrupo.jsp" data-toggle="tab"><h4>Grupos</h4></a></li>
-                                    <li><a href="#tab2" data-toggle="tab"><h4>Ações</h4></a></li>
+                                    <li><a href="../../pesquisarAcao" data-toggle="tab"><h4>Ações</h4></a></li>
                                 </ul>
                                 <div class="tab-content">
 

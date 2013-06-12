@@ -1,6 +1,5 @@
 package service;
 
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,8 +11,6 @@ import dao.AcaoDAO;
 import excecao.BDException;
 import excecao.ConexaoException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CadastrarAcaoServlet extends HttpServlet {
 
@@ -21,7 +18,7 @@ public class CadastrarAcaoServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        PrintWriter saida = response.getWriter();
+        PrintWriter out = response.getWriter();
         
         try {
             ControlaConexao controlaConexao = new ControlaConexao("config.txt");
@@ -29,37 +26,97 @@ public class CadastrarAcaoServlet extends HttpServlet {
 
             AcaoDAO dao = new AcaoDAO(controlaConexao.getConexao());
             
-            saida.println("<html>");
-            saida.println("<head>");
-            saida.println("<meta http-equiv='Content-Type' content='text/html; charset=ISO-8859-1'>");
-            saida.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/estilo.css\">");
-            saida.println("<title>Titulo da Página</title>");
-            saida.println("</head>");
-            saida.println("<body>");
-            saida.println("<h1>Cadastrar Acao</h1>");
-            saida.println("<form action='cadastrarAcao'>");
+            out.println("<html>");
+            
+            out.println("<head>");
+            
+            out.println("<meta charset='utf-8'/>");
+            out.println("<meta name='description' content='Teste Bootstrap'/>");
+            out.println("<meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
+//            out.println("<link href='paginas/css/bootstrap.css' rel='stylesheet' media='screen'/>");
+            out.println("<link href='paginas/css/bootstrap-responsive.css' rel='stylesheet' media='screen'/>");
+            out.println("<link href='paginas/css/estilo.css' rel='stylesheet' media='screen'/>");
+            out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() +  "/paginas/css/bootstrap.css' />");
+            out.println("<title>Pesquisar Acao</title>");
+           
+            out.println("</head>");
+            
+            out.println("<body>");
+            
+            out.println("<div id='wrap'>");
+            out.println("<div class='container-fluid'>");
 
-            saida.println("<p>Acao:");
-            saida.println("<input type='text' name='acao'/></p>");
-            saida.println("<p>Componente:");
-            saida.println("<input type='text' name='componente'/></p>");
+            out.println("<div class='row-fluid'>");
+            out.println("<div class='span12 topo'>");
+            out.println("<h1 class='h1'>CRUDY!</h1>");
+            out.println("</div>");
+
+            out.println("<div class='row-fluid'>");
+            out.println("<div class=' row-fluid span12 corTopo'>");
+            out.println("<ul class='nav nav-list'>");
+            out.println("<li class='active'><a href='paginas/home.jsp'><i class='icon-home icon-white'></i> Início</a></li>");
+            out.println("</ul>");
+            out.println("</div>");
+            out.println("</div>");
+
+            out.println("<div class='row-fluid'>");
+            out.println("<div class='span2'>");
+//                            <!--conteúdo da lateral-->
+            out.println("<div class='tabbable tabs-left'>");
+            out.println("<ul class='nav nav-tabs'>");
+            out.println("<li><a href='paginas/usuario/pesquisarUsuario.jsp' data-toggle='tab'><h4>Usuários</h4></a></li>");
+            out.println("<li><a href='paginas/grupo/pesquisarGrupo.jsp' data-toggle='tab'><h4>Grupos</h4></a></li>");
+            out.println("<li class='active'><a href='./pesquisarAcao' data-toggle='tab'><h4>Ações</h4></a></li>");
+            out.println("</ul>");
+            out.println("<div class='tab-content'>");
+
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+
+            out.println("<div class='span10'>");
+//          <!--conteúdo do corpo-->
+            out.println("<h2>Cadastrar Ação</h2>");
+
+            out.println("<form action='cadastrarAcao'>");
             
+            out.println("<fieldset>");
+            out.println("<label>Ação:</label>");
+            out.println("<input type='text' name='acao'/>");
             
+            out.println("<label>Componente:</label>");
+            out.println("<input type='text' name='componente'/>");
+            out.println("</fieldset>");           
             
-            saida.println("<input type='submit' name='cadastrar' value='Cadastrar'>"); 
-            saida.println("<a href='pesquisarAcao'><input type='button' name='cancelar' value='Cancelar'></a>"); 
-            saida.println("</form>");
-            saida.println("</body>");
-            saida.println("</html>");
+            out.println("<input class='btn' type='submit' name='cadastrar' value='Cadastrar'>"); 
+            out.println("<a href='pesquisarAcao'><input class='btn' type='button' name='cancelar' value='Cancelar'></a>"); 
+            out.println("</form>");
+            
+            out.println("</div>");
+            out.println("</div>");
+
+            out.println("<div class='span12 topo'></div>");
+
+            out.println("</div>");
+            out.println("</div>");
+            out.println("<div id='push'></div>");
+            out.println("</div>");
+
+            out.println("<div id='footer'>");
+            out.println("<div class='container-fluid'>");
+            out.println("<h4 class='h4'>@Todos os direitos reservados.</h4>");
+            out.println("</div>");
+            out.println("</div>");
+            
+            out.println("</body>");
+            out.println("</html>");
             
             String p = request.getParameter("cadastrar");
             
-            if (p != null) {
-                
+            if (p != null) {                
                 a.setDescricao(request.getParameter("acao"));
                 a.setComponente(request.getParameter("componente"));
-                dao.inserir(a);
-                
+                dao.inserir(a);                
             }
 
         } catch (ConexaoException | BDException e) {

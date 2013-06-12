@@ -40,56 +40,121 @@ public class PesquisarAcaoServlet extends HttpServlet {
             throws ServletException, IOException, ConexaoException, BDException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        
+
         try {
             ControlaConexao controlaConexao = new ControlaConexao("config.txt");
             AcaoDAO aDAO = new AcaoDAO(controlaConexao.getConexao());
             List<Acao> listaA = new ArrayList();
-            
+
             String p = request.getParameter("pesquisar");
-            
+
             Acao ac = new Acao();
-            
+
             if (p != null) {
-                
+
                 String c = request.getParameter("acao");
                 ac.setDescricao(c);
-                                
-            }else{
+
+            } else {
                 ac.setDescricao("");
             }
-            
-            listaA = aDAO.pesquisar(ac);           
-                       
+
+            listaA = aDAO.pesquisar(ac);
+
             /* TODO output your page here. You may use following sample code. */
             out.println("<html>");
+
             out.println("<head>");
-            out.println("<title>Servlet PesquisarAcaoServlet</title>");            
-            out.println("<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/estilo.css\">");            
+            
+            out.println("<meta charset=\"utf-8\"/>");
+            out.println("<meta name=\"description\" content=\"Teste Bootstrap\"/>");
+            out.println("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>");
+            out.println("<link href=\"paginas/css/bootstrap.css\" rel=\"stylesheet\" media=\"screen\"/>");
+            out.println("<link href=\"paginas/css/bootstrap-responsive.css\" rel=\"stylesheet\" media=\"screen\"/>");
+            out.println("<link href=\"paginas/css/estilo.css\" rel=\"stylesheet\" media=\"screen\"/>");
+            out.println("<title>Pesquisar Acao</title>");
+            
             out.println("</head>");
+
             out.println("<body>");
-            out.println("<h1>Pesquisar Acao</h1>");
+
+            out.println("<div id=\"wrap\">");
+            out.println("<div class=\"container-fluid\">");
+
+            out.println("<div class=\"row-fluid\">");
+            out.println("<div class=\"span12 topo\">");
+            out.println("<h1 class=\"h1\">CRUDY!</h1>");
+            out.println("</div>");
+
+            out.println("<div class=\"row-fluid\">");
+            out.println("<div class=\" row-fluid span12 corTopo\">");
+            out.println("<ul class=\"nav nav-list\">");
+            out.println("<li class=\"active\"><a href=\"paginas/home.jsp\"><i class=\"icon-home icon-white\"></i> Início</a></li>");
+            out.println("</ul>");
+            out.println("</div>");
+            out.println("</div>");
+
+            out.println("<div class=\"row-fluid\">");
+            out.println("<div class=\"span2\">");
+//                            <!--conteúdo da lateral-->
+            out.println("<div class=\"tabbable tabs-left\">");
+            out.println("<ul class=\"nav nav-tabs\">");
+            out.println("<li><a href=\"paginas/usuario/pesquisarUsuario.jsp\" data-toggle=\"tab\"><h4>Usuários</h4></a></li>");
+            out.println("<li><a href=\"paginas/grupo/pesquisarGrupo.jsp\" data-toggle=\"tab\"><h4>Grupos</h4></a></li>");
+            out.println("<li class=\"active\"><a href=\"./pesquisarAcao\" data-toggle=\"tab\"><h4>Ações</h4></a></li>");
+            out.println("</ul>");
+            out.println("<div class=\"tab-content\">");
+
+            out.println("</div>");
+            out.println("</div>");
+            out.println("</div>");
+
+            out.println("<div class=\"span10\">");
+//                            <!--conteúdo do corpo-->
+            out.println("<h2>Pesquisar Ação</h2>");
+
             out.println("<form name='pesquisarAcao' action='pesquisarAcao'>");
-            out.println("<p>Acao:</p>");
-            out.println("<input type='text' name='acao'/><br/>");
-            out.println("<input type='submit' name='pesquisar' value='Pesquisar'>");
+            out.println("<fieldset>");
+            out.println("<label>Ação:</label>");
+            out.println("<input type='text' name='acao'/>");
+            out.println("</fieldset>");
+
+            out.println("<input class=\"btn\" type='submit' name='pesquisar' value='Pesquisar'>");
             out.println("</form>");
-            out.println("<table border=1>");
-            out.println("<tr><th>Codigo</th><th>Nome</th>");
+
+            out.println("<table border=1 class=\"table table-bordered\">");
+            out.println("<tr><th>Codigo</th><th>Nome</th></tr>");
+
             for (Acao acao : listaA) {
-                
-                out.println("<tr>");                
-                out.println("<td>"+acao.getCodigo()+"</td>");                
-                out.println("<td>"+"<a href='consultarAcao?codigo="+acao.getCodigo()+"'</a>"+acao.getDescricao()+"</td>");
+                out.println("<tr>");
+                out.println("<td>" + acao.getCodigo() + "</td>");
+                out.println("<td>" + "<a href='consultarAcao?codigo=" + acao.getCodigo() + "'</a>" + acao.getDescricao() + "</td>");
             }
+
             out.println("</table><br/>");
-            out.println("<form name='cadastros'>");
-            out.println("<a href='cadastrarAcao'><input type='button' name='cadastrarAcao' value='Cadastrar Acao'></a>");
-            out.println("<a href='./paginas/index.jsp'><input type='button' name='index' value='Cancelar'></a>");
-            out.println("</form>");            
+            
+            out.println("<a href='cadastrarAcao'><input class=\"btn\" type='button' name='cadastrarAcao' value='Cadastrar'></a>");
+            out.println("<a href='./paginas/home.jsp'><input class=\"btn\" type='button' name='index' value='Cancelar'></a>");
+            
+            out.println("</div>");
+            out.println("</div>");
+
+            out.println("<div class=\"span12 topo\"></div>");
+
+            out.println("</div>");
+            out.println("</div>");
+            out.println("<div id=\"push\"></div>");
+            out.println("</div>");
+
+            out.println("<div id=\"footer\">");
+            out.println("<div class=\"container-fluid\">");
+            out.println("<h4 class=\"h4\">@Todos os direitos reservados.</h4>");
+            out.println("</div>");
+            out.println("</div>");
+            
             out.println("</body>");
             out.println("</html>");
-        } finally {            
+        } finally {
             out.close();
         }
     }
