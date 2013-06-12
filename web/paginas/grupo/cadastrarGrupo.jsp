@@ -28,106 +28,84 @@
         GrupoDAO dao = new GrupoDAO(controlaConexao.getConexao());
     %>        
     <body>
-        <h1>Cadastrar Grupo</h1>
-        <form action='cadastrarGrupo.jsp'>
-            <p>Grupo:
-                <input type='text' name='grupo'/></p>
+    <div class="row-fluid">
+        <div class="span12 topo">
+            <h1 class="h1">CRUDY!</h1>
+        </div>
 
-            <%
-                String p = request.getParameter("cadastrar");
+        <div class="row-fluid">
+            <div class=" row-fluid span12 corTopo">
+                <ul class="nav nav-list">
+                    <li class="active"><a href="../home.jsp"><i class="icon-home icon-white"></i> Início</a></li>                            
+                </ul>                    
+            </div>                    
+        </div>
 
-                if (p != null) {
+        <div class="row-fluid">
+            <div class="span2">
+                <!--conteúdo da lateral-->
+                <div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs">
+                        <li><a href="../usuario/pesquisarUsuario.jsp" data-toggle="tab"><h4>Usuários</h4></a></li>
+                        <li class="active"><a href="../grupo/pesquisarGrupo.jsp" data-toggle="tab"><h4>Grupos</h4></a></li>
+                        <li><a href="../../pesquisarAcao" data-toggle="tab"><h4>Ações</h4></a></li>
+                    </ul>
+                    <div class="tab-content">
 
-            %>
-            
-            <SCRIPT LANGUAGE="JavaScript">
-
-                alert("Registro incluído com sucesso!");
-
-            </script>
-
-            <%
-
-                    c.setNome(request.getParameter("grupo"));
-                    dao.inserir(c);
-                }
-            %>
-            <input type='submit' name='cadastrar' value='Cadastrar'>
-            <a href='pesquisarGrupo.jsp'><input type='button' name='cancelar' value='Cancelar'></a>
-        </form>
-    </body>
-
-                <div class="row-fluid">
-                    <div class="span12 topo">
-                        <h1 class="h1">CRUDY!</h1>
                     </div>
-
-                    <div class="row-fluid">
-                        <div class=" row-fluid span12 corTopo">
-                            <ul class="nav nav-list">
-                                <li class="active"><a href="../home.jsp"><i class="icon-home icon-white"></i> Início</a></li>                            
-                            </ul>                    
-                        </div>                    
-                    </div>
-
-                    <div class="row-fluid">
-                        <div class="span2">
-                            <!--conteúdo da lateral-->
-                            <div class="tabbable tabs-left">
-                                <ul class="nav nav-tabs">
-                                    <li><a href="../usuario/pesquisarUsuario.jsp" data-toggle="tab"><h4>Usuários</h4></a></li>
-                                    <li class="active"><a href="../grupo/pesquisarGrupo.jsp" data-toggle="tab"><h4>Grupos</h4></a></li>
-                                    <li><a href="../../pesquisarAcao" data-toggle="tab"><h4>Ações</h4></a></li>
-                                </ul>
-                                <div class="tab-content">
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="span10">
-                            <!--conteúdo do corpo-->
-                            <h2>Cadastrar Grupo</h2>
-
-                            <form action='cadastrarGrupo.jsp'>
-                                <fieldset>
-                                    <label>Grupo:</label>
-                                    <input type='text' name='grupo'/>
-
-                                    <%
-                                        String p = request.getParameter("cadastrar");
-
-                                        if (p != null) {
-                                            c.setNome(request.getParameter("grupo"));
-                                            dao.inserir(c);
-                                        }
-                                    %>
-                                </fieldset>
-
-                                <SCRIPT LANGUAGE="JavaScript">
-                                    function cancelar() {
-                                        window.location = "pesquisarGrupo.jsp";
-                                    }
-                                </script>
-
-                                <input class="btn" type='submit' name='cadastrar' value='Cadastrar'>
-                                <input class="btn" type="button" value="Cancelar" onClick="cancelar()"/>
-                            </form>
-
-                        </div>
-                    </div>
-
-                    <div class="span12 topo"></div>
-
                 </div>
             </div>
-            <div id="push"></div> 
-        </div>
 
-        <div id="footer">
-            <div class="container-fluid">
-                <h4 class="h4">@Todos os direitos reservados.</h4>
+            <div class="span10">
+                <!--conteúdo do corpo-->
+                <h2>Cadastrar Grupo</h2>
+
+                <form action='cadastrarGrupo.jsp'>
+                    <fieldset>
+                        <label>Grupo:</label>
+                        <input type="text" name="grupo"/>
+
+                        <%
+                            String p = request.getParameter("cadastrar");
+
+                            if (p != null) {
+                        %>
+                        <SCRIPT LANGUAGE="JavaScript">
+
+                            alert("Registro incluído com sucesso!");
+
+                        </script>
+                        <%
+                                c.setNome(request.getParameter("grupo"));
+                                dao.inserir(c);
+                            }
+                        %>
+                    </fieldset>
+
+                    <SCRIPT LANGUAGE="JavaScript">
+                        function cancelar() {
+                            window.location = "pesquisarGrupo.jsp";
+                        }
+                    </script>
+
+                    <input class="btn" type='submit' name='cadastrar' value='Cadastrar'>
+                    <input class="btn" type="button" value="Cancelar" onClick="cancelar()"/>
+                </form>
+
             </div>
         </div>
-    </body>
+
+        <div class="span12 topo"></div>
+
+    </div>
+</div>
+<div id="push"></div> 
+</div>
+
+<div id="footer">
+    <div class="container-fluid">
+        <h4 class="h4">@Todos os direitos reservados.</h4>
+    </div>
+</div>
+</body>
 </html>
