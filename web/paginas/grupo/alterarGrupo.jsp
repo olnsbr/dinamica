@@ -27,7 +27,7 @@
 
                 <div class="row-fluid">
                     <div class="span12 topo">
-                        <h1 class="h1">CRUDY!</h1>
+                        <h1 class="h1">OF System</h1>
                     </div>
 
                     <div class="row-fluid">
@@ -75,7 +75,7 @@
                                     <input type="text" name="nome" value="<%=c.getNome()%>"/><br/>
                                 </fieldset>
 
-                                <input class="btn" type='submit' name='alterar' value='Alterar'>
+                                <input class="btn btn-warning" type='submit' name='alterar' value='Salvar'>
                                 <a href='consultarGrupo.jsp?codigo=<%=c.getCodigo()%> '> <input class="btn" type='button' name='cancelar' value='Cancelar'</a>
                             </form>
                         </div>

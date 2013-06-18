@@ -17,26 +17,6 @@
         <link href="../css/estilo.css" rel="stylesheet" media="screen"/>        
         <title>Cadastrar Usuario</title>
         <script>
-            function IsNum(v)
-
-            {
-                var ValidChars = "0123456789";
-                var IsNumber = true;
-                var Char;
-
-
-                for (i = 0; i < v.length && IsNumber == true; i++)
-                {
-                    Char = v.charAt(i);
-                    if (ValidChars.indexOf(Char) == -1)
-                    {
-                        IsNumber = false;
-                    }
-                }
-                return IsNumber;
-
-            }
-
             function valida(form) {
                 if (form.nome.value == "") {
                     alert("Preencha o nome corretamente.");
@@ -67,25 +47,6 @@
                     form.conf_senha.focus();
                     return false;
                 }
-
-            }
-
-            function telefone(f) {
-                if (f.tel.value.length < 9 || f.tel.value.length > 10) {
-                    alert("Preencha o telefone corretamente.");
-                    f.tel.focus();
-                } else {
-                    ddd = f.tel.value.substring(0, 2);
-                    if (f.tel.value.length == 9) {
-                        part1 = f.tel.value.substring(2, 5);
-                        part2 = f.tel.value.substring(5, 9);
-                    }
-                    if (f.tel.value.length == 10) {
-                        part1 = f.tel.value.substring(2, 6);
-                        part2 = f.tel.value.substring(6, 10);
-                    }
-                    f.tel.value = "(" + ddd + ") " + part1 + "-" + part2
-                }
             }
         </script>
     </head>
@@ -95,7 +56,7 @@
 
                 <div class="row-fluid">
                     <div class="span12 topo">
-                        <h1 class="h1">CRUDY!</h1>
+                        <h1 class="h1">OF System</h1>
                     </div>
 
                     <div class="row-fluid">
@@ -152,13 +113,14 @@
                                     <br/>
 
                                     <label>Senha:</label>
-                                    <input type="password" name="senha" value="${user.senha}" maxlength="30" size="90"/><br/>
+                                    <input type="password" name="senha" value="${user.senha}" maxlength="30" size="90"/>
+                                    <span class="help-inline">Senha com mais de 6 dígitos</span><br/>
                                     <label>Confirmar Senha:</label>
                                     <input type="password" name="conf_senha" value="${user.senha}" maxlength="30" size="90"/><br/>
 
                                 </fieldset>  
 
-                                <input class="btn" type='submit' name='salvar' value='Salvar'>
+                                <input class="btn btn-warning" type='submit' name='salvar' value='Salvar'>
 
                                 <SCRIPT LANGUAGE="JavaScript">
                                     function cancelar() {
@@ -172,16 +134,14 @@
                             <c:if test="${not empty param.salvar}">
                                 <jsp:setProperty name="user" property="nome" value="${param.nome}"/>
                                 <jsp:setProperty name="user" property="email" value="${param.email}"/>
-                                <jsp:setProperty name="user" property="telefone" value="${param.telefone}"/>
+                                <jsp:setProperty name="user" property="telefone" value="${param.tel}"/>
                                 <jsp:setProperty name="grup" property="codigo" value="${param.grupo}"/>
                                 <jsp:setProperty name="user" property="grupo" value="${grup}"/>
                                 <jsp:setProperty name="user" property="senha" value="${param.senha}"/>
                                 <jsp:setProperty name="controleUsuario" property="usuario" value="${user}"/>
 
                                 <SCRIPT LANGUAGE="JavaScript">
-
                                     alert("Registro incluído com sucesso!");
-
                                 </script>
 
                                 <%controleUsuario.cadastrar();%>

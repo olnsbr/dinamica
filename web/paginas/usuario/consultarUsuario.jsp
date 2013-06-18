@@ -23,7 +23,7 @@
 
                 <div class="row-fluid">
                     <div class="span12 topo">
-                        <h1 class="h1">CRUDY!</h1>
+                        <h1 class="h1">OF System</h1>
                     </div>
 
                     <div class="row-fluid">
@@ -62,15 +62,19 @@
 
                             <c:if test="${not empty param.alterar}">
 
-
                                 <jsp:setProperty name="user" property="codigo" value="${param.codigo}"/>
                                 <jsp:setProperty name="user" property="nome" value="${param.nome}"/>
                                 <jsp:setProperty name="user" property="email" value="${param.email}"/>
                                 <jsp:setProperty name="user" property="telefone" value="${param.telefone}"/>
+                                <jsp:setProperty name="user" property="senha" value="${param.senha}"/>
                                 <jsp:setProperty name="grup" property="codigo" value="${param.grupo}"/>
                                 <jsp:setProperty name="user" property="grupo" value="${grup}"/>
 
                                 ${controleUsuario.alterar(user)}
+                                
+                                <SCRIPT LANGUAGE="JavaScript">
+                                    alert("Registro alterado com sucesso!");
+                                </script>
 
                             </c:if>
 
@@ -100,29 +104,38 @@
                                 function alterar(cod) {
                                     window.location = "alterarUsuario.jsp?codigo=" + cod;
                                 }
-                                function alterarSenha() {
-                                    window.location = "alterarSenhaUsuario.jsp?codigo=${usuario.codigo}";
+                                function alterarSenha(cod) {
+                                    window.location = "alterarSenhaUsuario.jsp?codigo=" + cod;
                                 }
-                                function excluir() {
-                                    
-                                    decisao = confirm("Tem Certeza ?");
-                                    
+                                function excluir(nome) {
+                                    decisao = confirm("Deseja excluir o usuário:" + nome + "?");
+
                                     if (decisao) {
-                                        
                                         alert("Usuário excluido com sucesso!");
                                         window.location = "pesquisarUsuario.jsp?dell=${user.codigo}";
-                                        
-                                    } else {
-                                        alert("Tudo bem, vamos manter o usuário cadastrado.");
+                                    } else {                                        
                                     }
-                                    
                                 }
                             </script>
 
-                            <input class="btn" type='button' name='alterar' value='Alterar' onclick="alterar(${user.codigo})"/>
-                            <!--<input class="btn" type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha()"/>-->
-                            <input class="btn" type='button' name='excluir' value='Excluir' onclick="excluir()"/>
+                            <input class="btn btn-warning" type='button' name='alterar' value='Alterar' onclick="alterar(${user.codigo})"/>
+                            <input class="btn" type='button' name='alterarSenha' value='Alterar Senha' onclick="alterarSenha(${user.codigo})"/>
+                            <input class="btn btn-danger" type='button' name='excluir' value='Excluir' onclick="excluir(${user.nome})"/>
                             <input class="btn" type="button" value="Cancelar" onclick="cancelar()"/>
+                            
+                            <div class="modal hide fade">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h3>Cabeçalho do modal</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Um corpo fino …</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#" class="btn">Fechar</a>
+                                    <a href="#" class="btn btn-primary">Salvar mudanças</a>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

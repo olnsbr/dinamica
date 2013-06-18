@@ -30,7 +30,7 @@
     <body>
     <div class="row-fluid">
         <div class="span12 topo">
-            <h1 class="h1">CRUDY!</h1>
+            <h1 class="h1">OF System</h1>
         </div>
 
         <div class="row-fluid">
@@ -88,7 +88,7 @@
                         }
                     </script>
 
-                    <input class="btn" type='submit' name='cadastrar' value='Cadastrar'>
+                    <input class="btn btn-warning" type='submit' name='cadastrar' value='Salvar'>
                     <input class="btn" type="button" value="Cancelar" onClick="cancelar()"/>
                 </form>
 

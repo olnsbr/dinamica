@@ -83,7 +83,7 @@ public class PesquisarAcaoServlet extends HttpServlet {
 
             out.println("<div class=\"row-fluid\">");
             out.println("<div class=\"span12 topo\">");
-            out.println("<h1 class=\"h1\">CRUDY!</h1>");
+            out.println("<h1 class=\"h1\">OF System</h1>");
             out.println("</div>");
 
             out.println("<div class=\"row-fluid\">");
@@ -119,7 +119,7 @@ public class PesquisarAcaoServlet extends HttpServlet {
             out.println("<input type='text' name='acao'/>");
             out.println("</fieldset>");
 
-            out.println("<input class=\"btn\" type='submit' name='pesquisar' value='Pesquisar'>");
+            out.println("<input class=\"btn btn-warning\" type='submit' name='pesquisar' value='Pesquisar'>");
             out.println("</form>");
 
             out.println("<table border=1 class=\"table table-bordered\">");
@@ -133,7 +133,7 @@ public class PesquisarAcaoServlet extends HttpServlet {
 
             out.println("</table><br/>");
             
-            out.println("<a href='cadastrarAcao'><input class=\"btn\" type='button' name='cadastrarAcao' value='Cadastrar'></a>");
+            out.println("<a href='cadastrarAcao'><input class=\"btn\" type='button btn-warning' name='cadastrarAcao' value='Cadastrar'></a>");
             out.println("<a href='./paginas/home.jsp'><input class=\"btn\" type='button' name='index' value='Cancelar'></a>");
             
             out.println("</div>");

@@ -17,7 +17,7 @@ public class CadastrarAcaoServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         
         try {
@@ -33,11 +33,10 @@ public class CadastrarAcaoServlet extends HttpServlet {
             out.println("<meta charset='utf-8'/>");
             out.println("<meta name='description' content='Teste Bootstrap'/>");
             out.println("<meta name='viewport' content='width=device-width, initial-scale=1.0'/>");
-//            out.println("<link href='paginas/css/bootstrap.css' rel='stylesheet' media='screen'/>");
+            out.println("<link href='paginas/css/bootstrap.css' rel='stylesheet' media='screen'/>");
             out.println("<link href='paginas/css/bootstrap-responsive.css' rel='stylesheet' media='screen'/>");
             out.println("<link href='paginas/css/estilo.css' rel='stylesheet' media='screen'/>");
-            out.println("<link rel='stylesheet' type='text/css' href='" + request.getContextPath() +  "/paginas/css/bootstrap.css' />");
-            out.println("<title>Pesquisar Acao</title>");
+            out.println("<title>Cadastrar Acao</title>");
            
             out.println("</head>");
             
@@ -48,7 +47,7 @@ public class CadastrarAcaoServlet extends HttpServlet {
 
             out.println("<div class='row-fluid'>");
             out.println("<div class='span12 topo'>");
-            out.println("<h1 class='h1'>CRUDY!</h1>");
+            out.println("<h1 class='h1'>OF System</h1>");
             out.println("</div>");
 
             out.println("<div class='row-fluid'>");
@@ -88,7 +87,7 @@ public class CadastrarAcaoServlet extends HttpServlet {
             out.println("<input type='text' name='componente'/>");
             out.println("</fieldset>");           
             
-            out.println("<input class='btn' type='submit' name='cadastrar' value='Cadastrar'>"); 
+            out.println("<input class='btn btn-warning' type='submit' name='cadastrar' value='Salvar'>"); 
             out.println("<a href='pesquisarAcao'><input class='btn' type='button' name='cancelar' value='Cancelar'></a>"); 
             out.println("</form>");
             

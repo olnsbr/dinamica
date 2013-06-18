@@ -1,10 +1,9 @@
 <%-- 
-    Document   : alterarUsuario
-    Created on : 07/06/2013, 14:16:03
+    Document   : alterarSenhaUsuario
+    Created on : 18/06/2013, 14:25:48
     Author     : Fran
 --%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,22 +14,10 @@
         <link href="../css/bootstrap.css" rel="stylesheet" media="screen"/>
         <link href="../css/bootstrap-responsive.css" rel="stylesheet" media="screen"/>
         <link href="../css/estilo.css" rel="stylesheet" media="screen"/>
-        <title>Alterar Usuario</title>
+        <title>Alterar Senha do Usuario</title>
         
         <script>
             function valida(form) {
-                if (form.nome.value == "") {
-                    alert("Preencha o nome corretamente.");
-                    form.nome.focus();
-                    return false;
-                }
-
-                if (form.tel.value == "") {
-                    alert("Preencha o telefone corretamente.");
-                    form.tel.focus();
-                    return false;
-                }
-
                 if (form.senha.value == "" || form.senha.value.length < 6) {
                     alert("Preencha a senha corretamente.");
                     form.senha.focus();
@@ -44,7 +31,7 @@
                 }
 
                 if (form.senha.value != form.conf_senha.value) {
-                    alert("A senha e a confirmação devem ser iguais.");
+                    alert("A senha e a confirmação tem de ser iguais.");
                     form.conf_senha.focus();
                     return false;
                 }
@@ -87,7 +74,7 @@
 
                         <div class="span10">
                             <!--conteúdo do corpo-->
-                            <h2>Alterar Usuario</h2>
+                            <h2>Alterar Senha do Usuario</h2>
 
                             <jsp:useBean id = "controleUsuario" class="controle.UsuarioControle"/>
                             <jsp:useBean id = "user" class="modelo.Usuario"/>
@@ -105,45 +92,30 @@
                                     <input type="hidden" name="codigo" value="${controleUsuario.usuario.codigo}"/>
 
                                     <label>Nome:</label>
-                                    <input type="text" name="nome" value="${controleUsuario.usuario.nome}" maxlength="30" size="90"/><br/>
+                                    <span class="input-xlarge uneditable-input">${controleUsuario.usuario.nome}</span><br/>
+                                    <input type="hidden" name="nome" value="${controleUsuario.usuario.nome}" maxlength="30" size="90"/>
+                                    <input type="hidden" name="email" value="${controleUsuario.usuario.email}" maxlength="30" size="90"/>
+                                    <input type="hidden" name="telefone" value="${controleUsuario.usuario.telefone}" maxlength="30" size="90"/>
+                                    <input type="hidden" name="grupo" value="${controleUsuario.usuario.grupo.codigo}" maxlength="30" size="90"/>
 
-                                    <label>Email:</label>
-                                    <input type="email" name="email" value="${controleUsuario.usuario.email}" maxlength="30" size="90"/><br/>
+                                    <label>Senha:</label>
+                                    <input type="password" name="senha" value="${controleUsuario.usuario.senha}" maxlength="30" size="90"/>
+                                    <span class="help-inline">Senha com mais de 6 dígitos</span><br/>
 
-                                    <label>Telefone:</label>
-                                    <input type="text" name="telefone" value="${controleUsuario.usuario.telefone}" maxlength="30" size="90"/><br/>
-
-                                    <input type="hidden" name="senha" value="${controleUsuario.usuario.senha}" maxlength="30" size="90"/><br/>
-
-                                    <label>Grupo:</label>
-                                    <select name='grupo'> 
-                                        <c:forEach var="grupo" items="${controleGrupo.grupos}">
-
-                                            <c:choose>
-                                                <c:when test="${grupo.codigo == controleUsuario.usuario.grupo.codigo}">
-                                                    <option value="${grupo.codigo}" selected="true">${grupo.nome}</option>
-                                                </c:when>
-
-                                                <c:otherwise>
-                                                    <option value="${grupo.codigo}" sel>${grupo.nome}</option>
-                                                </c:otherwise>
-                                            </c:choose>
-
-                                        </c:forEach>
-                                    </select>
-
+                                    <label>Confirmar Senha:</label>
+                                    <input type="password" name="confSenha" value="${controleUsuario.usuario.senha}" maxlength="30" size="90"/><br/>
                                 </fieldset>
 
                                 <SCRIPT LANGUAGE="JavaScript">
-                                function cancelar() {
-                                    window.location = "consultarUsuario.jsp?codigo=${controleUsuario.usuario.codigo}";
-                                }
+                                    function cancelar() {
+                                        window.location = "consultarUsuario.jsp?codigo=${controleUsuario.usuario.codigo}";
+                                    }
                                 </script>
 
                                 <input class="btn btn-warning" type='submit' name='alterar' value='Salvar'/>
                                 <input class="btn" type="button" value="Cancelar" onClick="cancelar()"/> 
                             </form> 
-                                
+
                             <jsp:setProperty name="controleUsuario" property="usuario" value="${user}"/>
 
                         </div>

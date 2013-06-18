@@ -31,7 +31,7 @@
 
                 <div class="row-fluid">
                     <div class="span12 topo">
-                        <h1 class="h1">CRUDY!</h1>
+                        <h1 class="h1">OF System</h1>
                     </div>
 
                     <div class="row-fluid">
@@ -110,7 +110,7 @@
                                         <%}%>
                                     </select><br/>
                                 </fieldset>
-                                <input class="btn" type="submit" name="adicionar" value="Adicionar"/>
+                                <input class="btn btn-warning" type="submit" name="adicionar" value="Adicionar"/>
                             </form>
 
                             <form name="excluir" action="alterarDados.jsp">
@@ -122,7 +122,7 @@
                                     <%}%>
                                 </select>
 
-                                <input class="btn" type="submit" name="excluir" value="Excluir"/>
+                                <input class="btn btn-danger" type="submit" name="excluir" value="Remover"/>
                                 <input class="btn" type="hidden" name="codigo" value="<%=grup.getCodigo()%>"/>
                             </form>
                             <a href='consultarGrupo.jsp?codigo=<%=grup.getCodigo()%> '> <input class="btn" type='button' name='cancelar' value='Cancelar'</a>

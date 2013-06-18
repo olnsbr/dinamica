@@ -42,7 +42,7 @@
 
                 <div class="row-fluid">
                     <div class="span12 topo">
-                        <h1 class="h1">CRUDY!</h1>
+                        <h1 class="h1">OF System</h1>
                     </div>
 
                     <div class="row-fluid">
@@ -79,10 +79,10 @@
                                 <label><b>Nome:</b></label>
                                 <span class="input-xlarge uneditable-input"><%=grup.getNome()%></span><br/><br/>
                             </fieldset>
-
-                            <a href='alterarGrupo.jsp?codigo=<%=grup.getCodigo()%>'> <input class="btn" type='button' name='alterar' value='Alterar Dados'></a>
+                            
                             <a href='alterarDados.jsp?codigo=<%=grup.getCodigo()%>'> <input class="btn" type='button' name='dados' value='Ações'></a>
-                            <a href='excluirGrupo.jsp?codigo=<%=grup.getCodigo()%>'> <input class="btn" type='button' name='excluir' value='Excluir'></a>
+                            <a href='alterarGrupo.jsp?codigo=<%=grup.getCodigo()%>'> <input class="btn btn-warning" type='button' name='alterar' value='Alterar Dados'></a>
+                            <a href='excluirGrupo.jsp?codigo=<%=grup.getCodigo()%>'> <input class="btn btn-danger" type='button' name='excluir' value='Excluir'></a>
                             <a href='pesquisarGrupo.jsp'><input class="btn" type='button' name='cancelar' value='Cancelar'></a>
 
                         </div>
