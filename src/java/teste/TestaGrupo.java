@@ -4,12 +4,9 @@
  */
 package teste;
 
-import com.sun.xml.internal.ws.encoding.soap.SOAP12Constants;
 import dao.GrupoDAO;
 import excecao.BDException;
 import excecao.ConexaoException;
-import java.util.ArrayList;
-import java.util.List;
 import modelo.Grupo;
 import util.ControlaConexao;
 
